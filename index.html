@@ -5,10 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>syflow.ru</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles/main.css"
+    <link rel="stylesheet" href="./styles/normalize.min.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
+
 <body>
-    <h1>МЫ СОЗДАЕМ</h1>
-    <p>автоматизированные приложения, <br> значительно повышающие качество и скорость</p>
+    <header>
+        <div class="container">
+            <div class="header">
+                <div class="logo"></div>
+                    <button id="central-btn"class="central-btn" onclick="openModal()">
+                        <div id="nav-line01" class="nav-line01"></div>
+                        <div id="nav-line02" class="nav-line02"></div>
+                        <div id="nav-line03" class="nav-line03"></div>
+                    </button>
+                <button class="presentation-btn">Презентация</button>
+                <button class="connect-btn">Связаться</button>    
+            </div>    
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="bracket-up"></div>
+        <div class="hero-text"> 
+            <h1 class="hero-title">создаем</h1>
+            <p class="hero-description">автоматизированные <span class="highlight"> &nbsp;&nbsp;excel-приложения&nbsp;&nbsp;</span> для повышения скорости и удобства проведения финансового анализа компаний</p>
+            <a href="#ourproducts" class="products-btn">Наши продукты</a>    
+        </div>
+        <div class="bracket-down"></div>
+        <div class="line"></div>
+    </section>
+
+    <section>
+        <div class="container">
+            <p class="transition-text">Опыт клиентов доказывает, что использование наших Excel приложений не только делает  комфортнее процесс финансового анализа, но и повышает прозрачность и качество управления кредитным риском</p>
+        </div>
+    </section> 
+
+    <section class="trust">
+        <h1 class="trust-title">нам доверяют, потому что</h1>
+
+        <div class="trust-container">
+            <div class="trust-textblock">
+                <h4 class="number-text">01</h4>
+                <h1 class="big-number">15+</h1>
+                <h5 class="number-description">лет экспертизы в области финансового анализа в крупнейших российских и международных банках</h5>
+            </div>
+
+            <div class="trust-textblock2">
+                <h4 class="number-text">02</h4>
+                <h1 class="big-number">3</h1>
+                <h5 class="number-description">года разработки и тестирования наших excel-приложений на сотнях компаний различных отраслей экономики</h5>
+            </div>
+        </div>
+
+        <div class="trust-container2">
+
+            <div class="trust-textblock3">
+                <h4 class="number-text">03</h4>
+                <h1 class="big-number">90%</h1>
+                <h5 class="number-description">эффект от сокращения времени по отдельным этапам финансового анализа с первых дней использования в работе наших excel-приложений </h5>
+            </div>
+
+            <div class="trust-textblock4">
+                <h4 class="number-text">04</h4>
+                <h1 class="big-number">250+</h1>
+                <h5 class="number-description">макросов написано нашей командой для загрузки, обработки и визуализации данных, а также UX / UI решений</h5>
+            </div>
+
+        </div>
+
+         
+    </section>
+
+    <main>
+        <section id="ourproducts">
+            <div class="container">
+                <div class="products">
+                    <div class="products-header">
+                        <h1 class="products-title">наши продукты</h1>
+                    </div>
+
+                    <div class="products-box"> 
+                        <div class="products-item">
+                            <div class="bracketup-black"></div>
+                            <h3 class="products-name">finaction</h3>
+                            <ul class="products-features">
+                                <li>автоматизированная загрузка бухгалтерской отчетности из системы СПАРК и nalog.ru</li>
+                                <li>автоматизированные инструменты гибкой финансовой аналитики</li>
+                                <li>автоматизированная визуализация данных посредством финансовых дашбордов</li>
+                            </ul>
+                            <button class="fa-btn">Подробнее</button>
+                            <div class="bracketdown-black"></div>
+                            <!--
+                            <div class="products-buttons">
+                                 <button class="demo-btn">Скачать DEMO</button> 
+                            </div>
+                            -->
+                        </div>
+                            
+                        <div class="products-item">
+                            <h3 class="products-name">финмодель</h3>
+                            <ul class="products-features">
+                                <li>автоматизированное составление финансовых моделей компаний на 5 лет за несколько секунд</li>
+                                <li>гибкая и удобная система стресс-тестирования финансовой модели по ключевым метрикам</li>
+                                <li>интерактивный дашборд со всей ключевой информацией по модели</li>
+                            </ul>
+                            <button class="fa-btn">Подробнее</button>
+                        </div>
+
+                        <div class="products-item2">
+                            <p class="products-justtext">Для каждого нашего клиента мы бесплатно пишем код / макрос для автоматического переноса данных финансовой отчетности компаний из ваших текущих excel-файлов</p>
+                        </div>
+
+
+                        <div class="products-item3">
+                        </div>
+
+
+                        <div class="products-item">
+                            <h3 class="products-name">кредитный портфель</h3>
+                            <ul class="products-features">
+                                <li>автоматизированное формирование ключевых срезов кредитного портфеля с визуализацией</li>
+                                <li>автоматизированное формирование графика погашения долговых обязательств компаний</li>
+                            </ul>
+                            <button class="fa-btn">Подробнее</button>
+                        </div>
+
+
+                        <div class="products-item">
+                            <h3 class="products-name">51 счет</h3>
+                            <ul class="products-features">
+                                <li>автоматизированноая обработка и объединение карточек 51 счета</li>
+                                <li>гибкая аналитика в разрезе периодов по контрагентам, банкам, группам расходов</li>
+                                <li>выделение внутригрупповых поступлений и отчислений</li>
+                            </ul>
+                            <button class="fa-btn">Подробнее</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="faq">
+        <h1 class="faq-title">FAQ</h1>
+            <div class="accordion">
+
+                
+            </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="logo-footer"></div>
+                <div class="footer-items">
+                    <h4 class="footer-politics">Политика конфиденциальности</h4>
+                    <h4 class="footer-contacts">Контакты</h4>
+                    <h5 class="footer-mail">syflow@mail.ru</h5>
+                </div>
+                <h5 class="footer-year">2025 © syflow</h5>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="modal">
+        <nav class="nav _modal">
+            <a href="#" class="nav-link">О нас</a>
+            <a href="#" class="nav-link">Получить консультацию</a>
+            <a href="#" class="nav-link2">Презентация</a>
+
+            <h4 class="products-mobile">Наши продукты</h4>
+            <a href="#" class="nav-link">FinAction</a>
+            <a href="#" class="nav-link">ОСВ Консо</a>
+            <a href="#" class="nav-link">Кредитный портфель</a>
+            <a href="#" class="nav-link">51 счет</a>
+        </nav>      
+        <button class="modal-close" onclick="closeModal()"></button>  
+    </div>
+
+
+<script src="scripts/script.js"></script>
+
 </body>
 </html>

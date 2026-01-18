@@ -1,3 +1,1587 @@
-h1 {
-    color: blue;
+:root {
+    --inter: "Inter", sans-serif;
+    
+    --extralight: 200;
+    --light: 300;
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
+    --extrabold: 800;
+    --black: 900; 
+    
+    --accent: #4466B2;
+    --accent2: #F0FF97;
+    --dark: #272727;
+    --light: #FFFFFF;
+    --background: #F8F8F8;
+    --grey: #B6B6B6;
+    --grey-light: #ECECEC
+
+    --tr: .4s;
+
 }
+
+body {
+    font-family: var(--inter);
+    font-weight: var(--extralight);
+    background-color: var(--background);
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box; 
+}
+
+    .header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        justify-content: space-between;
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+
+    }
+
+        .logo {
+            display: block;
+            flex-grow: 1;
+            margin: 0;
+            width: 124px;
+            height: 24px;
+            background-image: url(../images/logo.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            
+        }
+
+        .central-btn {
+            position: absolute;
+            left: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            border: none;
+            width: 50px;
+            height: 50px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            background-color: transparent;
+            margin: 0 auto;
+            justify-content: space-between;
+            cursor: pointer; /* Добавим курсор */
+            transform: translateX(-50%);
+        }
+
+            .nav-line01 {
+            background-image: url(../images/nav-line01.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 50px;
+            height: 2px;
+            border: none;
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transform-origin: center center;
+            }
+
+            .nav-line02 {
+            background-image: url(../images/nav-line02.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 50px;
+            height: 2px;
+            border: none;
+     
+            }
+
+            .nav-line03 {
+            background-image: url(../images/nav-line03.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 50px;
+            height: 2px;
+            border: none;
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transform-origin: center center;
+            }
+
+            .central-btn:hover #nav-line01 {
+                transform: translateY(8px);  /* Смещаем первую линию вниз на 8px */
+            }
+
+            .central-btn:hover #nav-line03 {
+                transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
+            }
+
+        .presentation-btn {
+            display: flex;
+            font-size: 16px;
+            background-color: var(--dark);
+            color: white;
+            height: 40px;
+            width: 169px;
+            align-items: center;
+            border: none;
+            border-radius: 4px;
+            padding-left: 20px;
+            padding-right: 20px;
+            gap: 11px;
+            transition: var(--tr);
+            cursor: pointer;
+            justify-content: center;
+        }
+
+        .presentation-btn::before {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 15px;
+            background-image: url(../images/icon-download.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        /* Отключаем hover для мобильных устройств */
+        @media(hover: hover) {
+            .presentation-btn:hover {
+                background-color: var(--accent);
+            }
+        }
+
+
+        .connect-btn {
+            height: 40px;
+            width: 169px;
+            align-items: center;
+            background-color: white;
+            color: var(--dark);
+            border-radius: 4px;
+            margin-left: 20px;
+            border: 1px solid var(--dark); 
+            transition: background-color 0.4s ease, color 0.4s ease;
+
+            display: flex;          /* Добавляем flex */
+            justify-content: center; /* Центрируем текст по умолчанию */
+
+        }
+
+        .connect-btn:hover {
+            background-color: var(--accent);
+            color: white;
+            border: var(--accent);
+        }
+
+/* HERO */
+
+.hero {
+    position: relative;
+    max-width: 1920px;
+    height: 100vh; /* убрать, чтобы была анимация фона */
+    max-height: 720px;
+    margin: 0 auto;
+    background-image: url(../images/hero_image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    text-align: left;
+    border-radius: 4px;
+    padding-left: 60px;
+}    
+
+    .bracket-up {
+        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
+        max-width: 1440px;
+        margin: 0 auto;
+        left: 40px;
+        top: 100px;
+        background-image: url(../images/bracket-up.svg); /* Путь к иконке */
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 80px;  /* Начальный размер иконки*/
+        height: 80px;    /* Начальный размер иконки*/  
+        filter: blur(4px);
+        
+        /*Начальное положение анимации*/
+        transform: translate(0, 0);
+        transition: transform 2s;
+    }
+
+    .bracket-up.animate {
+        transform: translate(30px, 30px);
+    }
+
+    .bracket-down {
+        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
+        max-width: 1440px;
+        margin: 0 auto;
+        left: 560px;
+        bottom: 300px;
+        background-image: url(../images/bracket-down.svg); /* Путь к иконке */
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 80px;  /* Начальный размер иконки*/
+        height: 80px;    /* Начальный размер иконки*/  
+        filter: blur(4px);
+        
+        /*Начальное положение анимации*/
+        transform: translate(30px, 30px);
+        transition: transform 2s;
+    }
+
+    .bracket-down.animate {
+        transform: translate(0, 0);
+    }
+
+
+    .hero-text {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding-top: 150px;
+        padding-bottom: 200px;
+        padding-left: 40px;
+        
+       
+    }
+
+        .hero-title {
+            max-width: 1440px;
+            font-family: var(--inter);
+            font-weight: var(--light);
+            text-align: left;
+            font-size: 20px; /* Начальный размер шрифта*/
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            color: var(--light);
+            
+            
+            /*Стили для анимации*/
+            opacity: 0; /* Начальная прозрачность (невидимый) */
+            filter: blur(20px); /* Начальная размытость */
+            transform: scale(0.5); /* Начальный масштаб (50%) */
+            transition: opacity 2s, filter 2s, transform 2s, font-size 2s; /* Плавный переход */
+            }
+
+        .hero-title.loaded {
+            opacity: 1; /* Конечная прозрачность (видимый) */
+            filter: blur(0); /* Конечная размытость (нет размытия) */
+            transform: scale(1); /* Конечный масштаб (100%) */
+            font-size: 100px; /* Конечный размер шрифта */
+        }
+
+        .hero-description {
+            max-width: 540px;
+            font-family: var(--inter);
+            font-weight: var(--regular);
+            font-size: 18px;
+            line-height: 170%;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            color: var(--light);
+            
+            /* Стили для анимации */
+            opacity: 0; /* Начальная прозрачность (невидимый) */
+            transition: opacity 1s; /* Плавный переход для прозрачности */
+        }
+
+        .hero-description.loaded {
+            opacity: 1; /* Конечная прозрачность (видимый) */
+        }
+
+        .highlight {
+            position: relative; /*  Необходимо для позиционирования фона */
+            z-index: 1; /*  Обеспечиваем, чтобы текст был над фоном */
+            color: var(--light);
+            transition: color 1s; /* Плавное изменение цвета текста */
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0; /* Начальная ширина фона */
+            height: 100%;
+            background-color: #F0FF97;
+            transition: width 1s; /* Плавное изменение ширины */
+            z-index: -1; /* Помещаем фон под текст */
+        }
+
+        .highlight.loaded::before {
+            width: 100%; /* Конечная ширина фона */
+        }
+
+        .highlight.loaded {
+            color: var(--dark); /* Цвет текста при появлении фона */
+        }
+
+        .products-btn {
+            max-width: 170px;
+            font-size: 16px;
+            font-family: var(--inter);
+            font-weight: var(--regular);
+            background-color: white;
+            color: #272727;
+            padding: 12px 16px;
+            text-align: center;
+            border-radius: 4px;
+            margin-top: 20px;
+    
+            /* Плавный переход для background-color, color и opacity */
+            transition: background-color 0.5s, color 0.5s, opacity 1s;
+        
+            /* Стили для анимации */
+            opacity: 0; /* Начальная прозрачность (невидимый) */
+        }
+
+        .products-btn.loaded {
+        opacity: 1; /* Конечная прозрачность (видимый) */
+        }
+
+
+        /* применяем hover только для ПК (есть курсор) */
+        @media(hover: hover) {
+            .products-btn:hover {
+                background-color: var(--accent);
+                color: white;
+            }
+        }
+
+
+    .line {
+        background-image: url(../images/line.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 1px;
+        height: 120px;
+        position: absolute;
+        background-position: center center;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: -120px;
+    }
+
+/* TRANSITION */
+
+.transition-text {
+    width: 100%;
+    display: block;
+    max-width: 560px;
+    margin: 72px auto;
+    font-family: var(--inter);
+    font-weight: var(--regular);
+    font-size: 18px;
+    line-height: 167%;
+    text-transform: uppercase;
+    color: var(--dark);
+}
+
+/* НАМ ДОВЕРЯЮТ */
+
+.trust {
+    width: 100%;
+    margin: 0;
+    max-width: 1440px;
+} 
+
+    .trust-title {    
+        padding-left: 50vw;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 80px;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: var(--dark);
+        max-width: 560px;
+    }
+
+    .trust-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 80px;
+        background-image: url(../images/arrow-down.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 20px;
+        }
+
+        
+.trust-container {
+    display: flex;     
+    width: 100%;
+    max-width: 1440px;
+    margin: 0;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+    .trust-textblock {
+        display: flex;           
+        flex-direction: column;
+        align-items: flex-start;
+        border-left: 2px solid var(--dark);
+        margin-top: 60px;
+        margin-left: 50vw;
+        margin-right: 30px;
+        padding-left: 12px;
+        max-width: 360px;
+        box-sizing: border-box;
+    }
+
+        .number-text {
+            margin: 0;
+            font-family: var(--inter);
+            font-weight: var(--extralight);
+            font-size: 30px;
+            text-transform: uppercase;
+            color: var(--grey);
+        }
+
+        .big-number {
+            margin: 0;
+            margin-top: 40px;
+            font-family: var(--inter);
+            font-weight: var(--extrabold);
+            font-size: 80px;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+
+        .number-description {
+            margin: 0;
+            margin-right: 15px;
+            font-family: var(--inter);
+            font-weight: var(--light);
+            font-size: 16px;
+            color: var(--dark);
+            max-width: 270px;
+        }
+
+    .trust-textblock2 {
+        display: flex;           
+        flex-direction: column;
+        align-items: flex-start;
+        border-left: 2px solid var(--dark);
+        padding-left: 12px;
+        margin-right: 0;
+        margin-top: 60px;
+        max-width: 270px;
+        box-sizing: border-box;
+    }
+
+.trust-container2 {
+    display: grid;
+    grid-template-columns: 50vw 1fr;  
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 60px; 
+    box-sizing: border-box;
+}
+
+
+
+    .trust-textblock3 {
+        grid-column: 1; /* первая колонка */
+        border-left: 2px solid var(--dark);
+        margin-right: 30px;
+        margin-left: 300px;
+        padding-left: 12px;
+        max-width: 360px;
+        box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+    }
+
+    .trust-textblock4 {
+        grid-column: 2; /* вторая колонка, начинается с 50% */
+        border-left: 2px solid var(--dark);
+        padding-left: 12px;
+        max-width: 270px;
+        box-sizing: border-box;
+    }
+
+
+/* НАШИ ПРОДУКТЫ */
+
+.products {
+    margin-bottom: 80px;
+}
+.products-header {
+    display: flex;
+    margin: 0;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    width: 100%;
+    
+}
+
+    .products-title {
+        margin: 0;
+        padding: 0;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 80px;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: var(--dark);
+        max-width: 560px;
+    }
+
+
+.products-box {
+    display: grid;
+    max-width: 1440px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 30px 30px;
+}
+
+.products-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 400px;
+    max-width: 400px;
+    background-color: #ECECEC;
+    border: 1px solid #ECECEC;
+    padding: 30px 30px;
+}
+
+    .bracketup-black {
+        position: absolute; 
+        left: -5px;
+        top: -5px;
+        background-image: url(../images/bracket-black-up.svg); 
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;  
+        height: 40px;
+        transition: transform 0.3s ease;    
+    }
+
+    .bracketdown-black {
+        position: absolute; 
+        bottom: -5px;
+        right: -5px;
+        background-image: url(../images/bracket-black-down.svg); 
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40px;  
+        height: 40px;
+        transition: transform 0.3s ease;    
+    }
+
+    .products-item:hover {
+        background-color: white;
+        border: 1px solid var(--dark);
+    }
+
+    /* Анимация при наведении на .products-item */
+    .products-item:hover .bracketup-black {
+        transform: translate(-15px, -15px);
+    }
+
+        .products-item:hover .bracketdown-black {
+        transform: translate(15px, 15px); 
+    }
+
+
+.products-item2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 400px;
+    max-width: 400px;
+    margin:0;
+}
+
+.products-item3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 400px;
+    max-width: 400px;
+    margin:0;
+}
+
+    .products-name {
+    
+        margin: 0;
+        padding-bottom: 15px;
+        font-family: var(--inter);
+        font-weight: var(--bold);
+        font-size: 40px;
+        text-transform: uppercase;
+        color: var(--dark);    
+    }
+
+    .products-features {
+        list-style: none;
+        color: var(--dark);
+        max-width: 300px;
+        line-height: 125%;
+        margin: 0;
+        margin-left: 15px;
+        padding: 0;
+    }
+
+        .products-features li {
+            position: relative;
+            font-family: var(--inter);
+            font-weight: var(--light);
+            font-size: 16px;
+            margin: 0;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            max-width: 300px;
+    }
+
+        .products-features li::before {
+            content: "";
+            position: absolute;
+            left: -12px; /* позиция буллита слева у текста */
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--dark); /* цвет буллита, можно изменить */
+            border-radius: 2px; /* скругление углов */
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+
+
+    .products-justtext {
+        margin: 0;
+        max-width: 350px;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 16px;
+        color: var(--dark);  
+    }
+
+    .products-justtext::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-image: url(../images/arrow-blue-top-right.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-bottom: 10px;
+        }
+
+
+/*
+    .products-buttons {
+    display: flex;
+    justify-content: space-between;
+    }
+
+        .demo-btn {
+            display: flex;
+            font-size: 16px;
+            background-color: var(--dark);
+            color: white;
+            height: 40px;
+            width: 180px;
+            align-items: center;
+            border: none;
+            border-radius: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            gap: 10px;
+            transition: var(--tr);
+            justify-content: center;
+        }
+
+        .demo-btn::before {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 15px;
+            background-image: url(../images/icon-download.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .demo-btn:hover {
+            background-color: var(--accent);
+        }
+
+        */
+
+        .fa-btn {
+            display: flex;          /* Добавляем flex */
+            justify-content: center; /* Центрируем текст по умолчанию */
+            min-height: 40px;
+            width: 120px;
+            align-items: center;
+            background-color: white;
+            color: var(--dark);
+            margin: 0;
+            margin-left: 35px;
+            border: 1px solid var(--dark); 
+            transition: background-color 0.4s ease, color 0.4s ease;
+
+            margin-top: auto; /*  Ключевое свойство!  */
+            margin-bottom: 0; /*  Отступ снизу  */
+        }
+
+        .fa-btn:hover {
+            background-color: var(--accent);
+            color: white;
+            border: var(--accent);
+        }
+
+/* FAQ*/
+.faq {
+    width: 100%;
+    max-width: 1440px;
+    margin: 80px auto;
+    background-color: var(--dark);
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box; 
+}
+
+    .faq-title {
+        margin: 0;
+        padding: 0;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 80px;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        color: var(--light);
+    }
+
+
+/* FOOTER */
+
+.footer {
+    background-color: var(--accent);
+    height: 200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.footer-wrapper {
+    display: grid;
+    grid-template-columns: 50% 25% 25%; /* первая колонка 50%, остальные по 25% */
+    max-width: 1440px; /* максимальная ширина контейнера */
+    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
+    margin: 0 auto; /* центрирование контейнера */
+}
+    .logo-footer {
+        grid-column: 1;
+        display: flex;
+        max-width: 247px;
+        max-height: 49px;
+        background-image: url(../images/logo-footer.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 75px;
+
+    }
+
+    .footer-items {
+        grid-column: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 0;
+        padding-top: 40px;
+    }
+
+    .footer-politics {
+        grid-column: 2;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 16px;
+        letter-spacing: -0.04em;
+        color: var(--light);
+        max-width: 220px;
+        margin: 0;
+    }
+
+    .footer-contacts {
+        grid-column: 2;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 16px;
+        letter-spacing: -0.04em;
+        color: var(--light);
+        margin: 0;
+        padding-top: 40px;
+
+    }
+
+    .footer-mail {
+        grid-column: 2;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 16px;
+        letter-spacing: -0.04em;
+        color: var(--grey);
+        margin: 0;
+        margin-bottom: 40px;
+    }
+
+    .footer-year {
+        grid-column: 3;
+        text-transform: uppercase;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        font-size: 16px;
+        letter-spacing: -0.04em;
+        color: var(--grey);
+        text-align: right;  /* Выравнивание текста по правому краю */
+        padding-right: 15px;
+        margin-top: 135px;    
+    }
+
+
+/* ПРИ НАЖАТИИ НА BURGER-MENU */   
+.nav._modal {
+    display: block;
+}
+
+.modal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-height: 260px;
+    background-color: var(--dark);
+    padding: 50px 15px;
+    top: -400px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    transition: 0.5s;
+    z-index: 999;
+}
+
+.nav-link {
+    margin: 0 auto;
+    display: block;
+    color: var(--grey);
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav-link2 {
+    margin: 0 auto;
+    display: block;
+    color: var(--accent2);
+    text-decoration: none;
+    text-align: center;
+}
+
+.products-mobile {
+    color: var(--background);
+    margin: 0;
+    padding-top: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/close-button.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    top: 20px;
+
+
+}
+
+
+
+/* MEDIA 1080px*/
+@media (max-width: 1080px) {
+
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .hero {
+        padding-left: 30px;
+    }
+
+    .bracket-up {
+        left: 10px;
+    }
+
+    .bracket-down {
+        left: 530px;
+    }
+
+    .connect-btn {
+        width: 110px;
+    }
+
+
+    .trust-textblock3 {
+        margin-left: 30px;
+    }
+
+    .products-header {
+    display: block;
+    margin-top: 80px;
+    margin-bottom: 40px;    
+    }
+
+    .products-item2 {
+        display: block;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .trust-title {
+        font-size: 60px;
+        max-width: 460px;
+    }
+
+    .trust-title::after {
+        width: 60px;
+        height: 60px;
+    }
+
+    .products-title {
+        display: block;
+        max-width: 460px;
+        font-size: 60px;
+    }
+
+    .products-box {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 30px 30px;
+        margin: 0;
+
+    }
+
+    .products-item3 {
+        display: none;
+    }
+
+    .products-justtext::before {
+        display: none;
+    }
+}
+
+/* MEDIA TABLET 768px*/
+@media (max-width: 768px) {
+
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .presentation-btn {
+        width: auto; /* Автоматическая ширина */
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 14px;
+        justify-content: center; /* Центрируем текст */
+        visibility: hidden; /* Скрываем текст */
+    }
+
+    .presentation-btn::before {
+        display: none; /* Скрываем псевдоэлемент */
+    }
+
+    /* Заменяем текст кнопки (можно и через JS) */
+    .presentation-btn::after {
+        content: "pdf"; /* Меняем текст */
+        visibility: visible; /* Отображаем "pdf" */
+        display: flex;
+        font-size: 14px;
+        background-color: var(--dark);
+        color: white;
+        height: 40px;
+        width: 40px;
+        align-items: center;
+        border: none;
+        border-radius: 4px;
+        transition: var(--tr);
+        justify-content: center;    
+    }
+
+        /* применяем hover только для ПК (есть курсор) */
+        @media(hover: hover) {
+            .presentation-btn:hover::after {
+                background-color: var(--accent);
+            }
+        }
+
+    .connect-btn {
+        width: 40px; /* Ширина кнопки = ширине иконки */
+        height: 40px; /* Высота кнопки = высоте иконки */
+        border-radius: 4px;
+        color: transparent;  /* Скрываем текст */
+        position: relative;  /* Позиционирование иконки */
+        background-color: var(--dark);
+        border: 1px solid var(--dark); /* Добавлено для отображения рамки */
+    }
+
+        .connect-btn:hover {
+            font-size: 2px;
+            color: transparent
+        }
+
+    
+    .connect-btn::before {
+        content: ''; /* Обязательно для псевдоэлемента */
+        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
+        top: 50%;           /* Центрируем по вертикали */
+        left: 50%;          /* Центрируем по горизонтали */
+        transform: translate(-50%, -50%); /* Точное центрирование */
+        width: 20px;        /* Ширина иконки */
+        height: 16px;       /* Высота иконки */
+        background-image: url(../images/letter.svg); /* Путь к иконке */
+        background-repeat: no-repeat;
+        background-size: contain; /* Масштабируем иконку */
+    }
+
+    .connect-btn:hover::after { 
+        background-color: var(--accent);
+        color: white;
+        border: var(--accent);
+    }
+
+    .hero {
+    padding-left: 24px;
+    }
+
+    .products-header {
+        margin-top: 60px;  
+}
+
+}
+
+/* MEDIA TABLET 730px */
+@media (max-width: 730px) {
+
+    .hero {
+        height: 70vw;
+    }
+
+    .bracket-up {
+        left: 10px;
+        top: 50px;
+        width: 50px; 
+        height: 50px; 
+    }
+
+    .bracket-down {
+        left: 420px;
+        bottom: 0;
+        top: 230px;
+        width: 50px; 
+        height: 50px;
+    }
+
+
+    .hero-text {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .hero-title {
+        font-size: 10px; /* Начальный размер шрифта*/
+    }
+
+    .hero-title.loaded {
+        font-size: 60px; /* Конечный размер шрифта для маленьких экранов */
+    }
+
+
+    .hero-description {
+        max-width: 380px;
+        font-size: 14px;
+    }
+
+    .transition-text {
+        font-size: 14px;
+        max-width: 460px;
+    }
+
+    .trust-title {
+        padding-left: 24px;
+    }
+
+    .trust-textblock {
+        margin-left: 24px;
+        max-width: 360px;
+        padding-right: 0;
+
+    }
+
+    .trust-textblock2 {
+        max-width: 360px;
+        margin-right: 15px;
+
+    }
+
+    .trust-container2 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1440px;
+        box-sizing: border-box;
+    }
+        
+    .trust-textblock3 {
+        margin-left: 24px;
+        padding-right: 0;
+        max-width: 360px;
+    }
+
+    .trust-textblock4 { 
+        max-width: 360px;   
+        margin-right: 15px;
+    }
+
+    .products-box {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 15px 15px;
+    }
+
+    .products-item {
+        padding: 15px 15px;
+    }
+
+    .products-item3 {
+        display: none;
+    }
+
+    .products-name {
+        font-size: 30px;
+    }
+
+    .products-features li {
+        font-size: 14px;
+    }
+
+    .products-features li::before {
+        width: 12px;
+        height: 12px;
+    }
+
+    .footer-politics {
+        font-size: 14px;
+    }
+
+    .footer-contacts {
+        font-size: 14px;
+    }
+
+    .footer-mail {
+        font-size: 12px;
+    }
+
+    .footer-year {
+        font-size: 12px;
+    }
+}
+
+
+/* MEDIA TABLET 600px */
+@media (max-width: 600px) {
+
+    .products-name {
+        font-size: 20px;
+    }
+
+    .products-features {
+        line-height: 100%;
+    }
+
+    .products-features li {
+        font-size: 12px;
+        padding-left: 10px;
+    }
+
+    .products-features li::before {
+        width: 10px;
+        height: 10px;
+    }
+
+    .fa-btn {
+        margin-left: 20px;
+        min-height: 30px;
+        width: 100px;
+        font-size: 12px;
+    }
+    
+    .footer-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .footer-year {
+        grid-column: 1;
+        display: flex;
+        margin: 0;
+    }
+
+}
+
+
+
+@media (max-width: 500px) {
+
+    .header {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .logo {
+        width: 62px;
+        height: 12px;
+    }
+
+    .presentation-btn::after {
+        font-size: 12px;
+        height: 30px;
+        width: 30px;
+    } 
+
+    .connect-btn {
+        width: 30px; 
+        height: 30px;
+        margin: 0;
+        padding: 0;
+        font-size: 5px; /* Невидимый текст "Связаться" */
+    }
+
+    .connect-btn::before {
+        width: 16px;      
+        height: 12px;
+    }
+
+    .bracket-up {
+        left: 0;
+        top: 40px;
+        width: 30px; 
+        height: 30px; 
+    }
+
+    .bracket-down {
+        left: 300px;
+        bottom: 0;
+        top: 190px;
+        width: 30px; 
+        height: 30px;
+    }
+
+    .hero-text {
+        padding-top: 80px;
+        padding-bottom: 60px;
+        padding-left: 20px;
+    }
+
+    .hero-title {
+        font-size: 10px; /* Начальный размер шрифта*/
+    }
+
+    .hero-title.loaded {
+        font-size: 40px; /* Конечный размер шрифта для маленьких экранов */
+    }
+
+    .hero-description {
+        max-width: 310px;
+        font-size: 12px;
+    }
+
+    .products-btn {
+        max-width: 140px;
+        font-size: 12px;
+        padding: 8px 8px;
+        margin-top: 0;
+    }
+   
+    .line {
+        width: 1px;
+        height: 60px;
+        bottom: -60px;
+    }
+
+    .transition-text {
+        font-size: 10px;
+        max-width: 260px;
+        margin: 40px auto;
+    }
+
+    .trust-title {    
+        font-size: 48px;
+        max-width: 300px;
+        padding-left: 24px;
+    }
+
+    .trust-title::after {
+        width: 40px;
+        height: 40px;
+    }
+
+    .trust-container2 {
+        margin-top: 30px;
+    }
+
+    .trust-textblock {
+        margin-top: 30px;
+    }
+
+    .trust-textblock2 {
+        margin-top: 30px;
+    }
+
+    .number-text {
+            font-size: 14px;
+    }
+
+    .big-number {
+        font-size: 48px;
+    }
+
+    .number-description {
+        font-size: 12px;
+    }
+
+    .products-header {
+        margin-top: 40px;  
+    }
+
+    .products-justtext {
+        font-size: 12px;
+    }
+
+    .products-title {
+        font-size: 48px;
+        max-width: 360px;
+    }
+
+    .products-box {
+        grid-template-columns: 1fr;
+    }
+
+.products-item {
+    max-height: 500px;
+    max-width: 500px;
+    padding: 30px 30px;
+}
+
+
+    .products-features li {
+        width: 100%;
+    }
+
+}
+
+
+
+@media (max-width: 430px) {
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .hero {
+        padding-left: 15px;
+    }
+
+    .bracket-up {
+        left: -10px;
+        top: 20px;
+        width: 30px; 
+        height: 30px; 
+    }
+
+    .bracket-down {
+        left: 260px;
+        bottom: 0;
+        top: 160px;
+        width: 30px; 
+        height: 30px;
+    }
+
+
+    .hero-text {
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+
+    .hero-title {
+        font-size: 10px; /* Начальный размер шрифта*/
+         font-weight: var(--light);
+    }
+
+    .hero-title.loaded {
+        font-size: 40px; /* Конечный размер шрифта для маленьких экранов */
+    }
+
+    .hero-description {
+        max-width: 260px;
+        font-size: 10px;
+    }
+ 
+    .products-btn {
+    max-width: 140px;
+    font-size: 10px;
+    padding: 8px 8px;
+    margin-top: 0;
+    }
+
+    .central-btn {
+        height: 25px;
+        width: 25px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .nav-line01 {
+        height: 25px;
+        width: 1px;
+    }
+
+    .nav-line02 {
+        height: 25px;
+        width: 1px;
+    }
+
+    .nav-line03 {
+        height: 25px;
+        width: 1px;
+    }
+
+    .central-btn:hover #nav-line01 {
+        transform: translateY(4px);  /* Смещаем первую линию вниз на 8px */
+    }
+
+    .central-btn:hover #nav-line03 {
+        transform: translateY(-4px); /* Смещаем третью линию вверх на 8px */
+    }
+
+    .trust-title {
+        font-size: 40px;
+    }
+
+    .number-text {
+            font-size: 12px;
+    }
+
+    .big-number {
+        font-size: 40px;
+    }
+
+    .number-description {
+        font-size: 10px;
+    }
+
+    .products-title {
+        font-size: 40px;
+        max-width: 300px;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    .presentation-btn::after {
+        font-size: 8px;
+        height: 24px;
+        width: 24px;
+    } 
+
+    .connect-btn {
+        width: 24px; 
+        height: 24px;
+    }
+
+    .connect-btn::before {
+        width: 14px;      
+        height: 10px;
+    }
+
+    .hero-text {
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+
+    .hero-title.loaded {
+        font-size: 36px; /* Конечный размер шрифта для маленьких экранов */
+    }
+
+    .hero-description {
+        font-size: 8px;
+        max-width: 220px;
+    }
+
+    .trust-title {    
+        font-size: 40px;
+    }
+
+    .bracket-down {
+        left: 240px;
+        bottom: 0;
+        top: 140px;
+        width: 30px; 
+        height: 30px;
+    }
+
+    .products-btn {
+        margin-top: 6px;
+    }
+
+    .bracketup-black {
+        width: 30px;  
+        height: 30px;
+    }
+
+    .bracketdown-black {
+        width: 30px;  
+        height: 30px;
+    }
+
+}
+
