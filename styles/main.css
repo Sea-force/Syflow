@@ -16,7 +16,7 @@
     --light: #FFFFFF;
     --background: #F8F8F8;
     --grey: #B6B6B6;
-    --grey-light: #ECECEC
+    --grey-light: #ECECEC;
 
     --tr: .4s;
 
@@ -124,12 +124,16 @@ h1 {
             transform-origin: center center;
             }
 
-            .central-btn:hover #nav-line01 {
-                transform: translateY(8px);  /* Смещаем первую линию вниз на 8px */
+            @media (hover: hover) {
+                .central-btn:hover #nav-line01 {
+                    transform: translateY(8px);  /* Смещаем первую линию вниз на 8px */
+                }
             }
 
-            .central-btn:hover #nav-line03 {
-                transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
+            @media (hover: hover) {
+                .central-btn:hover #nav-line03 {
+                    transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
+                }
             }
 
         .presentation-btn {
@@ -184,10 +188,12 @@ h1 {
 
         }
 
-        .connect-btn:hover {
-            background-color: var(--accent);
-            color: white;
-            border: var(--accent);
+        @media (hover: hover) {
+            .connect-btn:hover {
+                background-color: var(--accent);
+                color: white;
+                border: var(--accent);
+            }
         }
 
 /* HERO */
@@ -402,11 +408,12 @@ h1 {
 
 .trust {
     width: 100%;
-    margin: 0;
-    max-width: 1440px;
+    margin: 0 auto;
 } 
 
-    .trust-title {    
+    .trust-title {  
+        margin: 0;  
+        padding: 0;
         padding-left: 50vw;
         font-family: var(--inter);
         font-weight: var(--light);
@@ -428,24 +435,27 @@ h1 {
         margin-top: 20px;
         }
 
-        
+  
 .trust-container {
-    display: flex;     
-    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 25% 25%; /* первая колонка 50%, остальные по 25% */ 
+    grid-template-rows: auto;
+    row-gap: 60px;
     max-width: 1440px;
-    margin: 0;
-    justify-content: space-between;
+    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
+    margin: 0px auto;
+    margin-top: 60px; 
     box-sizing: border-box;
 }
 
+
     .trust-textblock {
-        display: flex;           
+        grid-column: 2;
+        display: flex;     
+        margin: 0;      
         flex-direction: column;
         align-items: flex-start;
         border-left: 2px solid var(--dark);
-        margin-top: 60px;
-        margin-left: 50vw;
-        margin-right: 30px;
         padding-left: 12px;
         max-width: 360px;
         box-sizing: border-box;
@@ -481,34 +491,22 @@ h1 {
         }
 
     .trust-textblock2 {
+        grid-column: 3;
         display: flex;           
         flex-direction: column;
         align-items: flex-start;
         border-left: 2px solid var(--dark);
         padding-left: 12px;
         margin-right: 0;
-        margin-top: 60px;
         max-width: 270px;
         box-sizing: border-box;
     }
-
-.trust-container2 {
-    display: grid;
-    grid-template-columns: 50vw 1fr;  
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 60px; 
-    box-sizing: border-box;
-}
-
-
 
     .trust-textblock3 {
         grid-column: 1; /* первая колонка */
         border-left: 2px solid var(--dark);
         margin-right: 30px;
-        margin-left: 300px;
+        margin-left: 20vw;
         padding-left: 12px;
         max-width: 360px;
         box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
@@ -594,18 +592,24 @@ h1 {
         transition: transform 0.3s ease;    
     }
 
-    .products-item:hover {
-        background-color: white;
-        border: 1px solid var(--dark);
+    @media (hover: hover) {
+        .products-item:hover {
+            background-color: white;
+            border: 1px solid var(--dark);
+        }
     }
 
-    /* Анимация при наведении на .products-item */
-    .products-item:hover .bracketup-black {
-        transform: translate(-15px, -15px);
+    /* Анимация при наведении на .products-item (работает только для устройств с мышкой)*/
+    @media (hover: hover) {
+        .products-item:hover .bracketup-black {
+            transform: translate(-15px, -15px);
+        }
     }
 
+    @media (hover: hover) {
         .products-item:hover .bracketdown-black {
         transform: translate(15px, 15px); 
+       }
     }
 
 
@@ -751,26 +755,34 @@ h1 {
             margin-bottom: 0; /*  Отступ снизу  */
         }
 
-        .fa-btn:hover {
-            background-color: var(--accent);
-            color: white;
-            border: var(--accent);
+        @media (hover: hover) {
+            .fa-btn:hover {
+                background-color: var(--accent);
+                color: white;
+                border: var(--accent);
+            }
         }
 
 /* FAQ*/
 .faq {
-    width: 100%;
-    max-width: 1440px;
-    margin: 80px auto;
+    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
+    margin: 80px auto; /* центрирование контейнера */
+    margin-bottom: 0;
     background-color: var(--dark);
-    padding-left: 60px;
-    padding-right: 60px;
+}
+
+.faq-container {
+    display: grid;
+    grid-template-columns: 50% 50%; /* первая колонка 50%, вторая - 50% */
+    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 60px;
     box-sizing: border-box; 
 }
 
     .faq-title {
-        margin: 0;
-        padding: 0;
+        grid-column: 1;
         font-family: var(--inter);
         font-weight: var(--light);
         font-size: 80px;
@@ -779,11 +791,144 @@ h1 {
         color: var(--light);
     }
 
+    .accordion-list {
+        grid-column: 2; /* Теперь весь список занимает правую колонку */
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        gap: 10px; /* ВОТ ВАШ ОТСТУП 10px между аккордеонами */
+        align-self: start; /* Чтобы аккордеоны не растягивались на всю высоту заголовка FAQ */
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .accordion { 
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .accordion-header {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+
+        .question {
+            flex-grow: 1;
+            padding: 0;
+            margin: 0;
+            margin-right: 15px;
+            width: 100%;
+            font-family: var(--inter);
+            font-weight: var(--regular);
+            font-size: 18px;
+            line-height: 167%;
+            text-transform: uppercase;
+            color: var(--grey);    
+        }
+
+        @media (hover: hover) {
+            .question:hover {
+                color: var(--light);
+            }
+        }
+
+            .question.active {
+                color: var(--light);
+            }
+
+        .accordion-btn {
+            background-image: url(../images/plus.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-color: transparent;
+            width: 20px;
+            height: 20px;
+            border: none;
+            cursor: pointer;
+            flex-shrink: 0; /* Чтобы кнопка не уменьшалась при длинном вопросе */
+            display: flex; /* Делаем flex-контейнером */
+            align-items: center; /* Вертикальное выравнивание */
+            justify-content: center;
+            transition: background-image 0.3s ease;
+        }
+
+        /* Стиль для кнопки, когда аккордеон активен (открыт) */
+        .accordion-btn.active {
+            background-image: url(../images/minus.svg); /* Меняем на минус */
+            width: 20px;
+            height: 20px;
+            /* transform: translateY(10px); */
+
+        }
+
+
+        .answer {
+            margin: 0;
+            padding: 0;
+            font-family: var(--inter);
+            font-weight: var(--light);
+            font-size: 16px;
+            color: var(--light);
+            border-bottom: none;
+            line-height: 130%;
+            padding-right: 20px;
+
+            /* ПО УМОЛЧАНИЮ СКРЫВАЕМ ОТВЕТ */
+            max-height: 0; /* Скрываем содержимое */
+            overflow: hidden; /* Обрезаем, чтобы не было видно */
+            transition: max-height 0.4s ease, padding-bottom 0.4s ease; /* Плавное появление */
+        }
+
+        /* Когда аккордеон активен, показываем ответ */
+        .answer.active {
+            max-height: 400px; /* Установите достаточно большое значение, чтобы весь текст поместился. Можно больше, например 500px, главное, чтобы текст не был обрезан */
+            padding-bottom: 12px;
+            padding-right: 20px;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .answer-items {
+            display: flex;
+            align-items: stretch;
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+        }
+
+        .number-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            color: var(--dark);
+            background-color:var(--light);
+            padding: 0 8px;
+            min-width: 20px;
+        }
+
+        .answer-item {
+            margin: 0;
+            padding: 0;
+            font-family: var(--inter);
+            font-weight: var(--light);
+            font-size: 16px;
+            color: var(--grey-light);
+        }
+
 
 /* FOOTER */
 
 .footer {
-    background-color: var(--accent);
+    background-color: var(--grey-light);
     height: 200px;
     width: 100%;
     margin: 0 auto;
@@ -801,11 +946,20 @@ h1 {
         display: flex;
         max-width: 247px;
         max-height: 49px;
-        background-image: url(../images/logo-footer.png);
+        background-image: url(../images/logo-footer-dark.png);
         background-repeat: no-repeat;
         background-size: contain;
         margin-top: 75px;
+        z-index: 1;
 
+    }
+
+    .site {
+        grid-column: 1;
+        display: block;
+        font-family: var(--inter);
+        font-weight: var(--light);
+        color: var(--grey-light);
     }
 
     .footer-items {
@@ -824,7 +978,7 @@ h1 {
         font-weight: var(--light);
         font-size: 16px;
         letter-spacing: -0.04em;
-        color: var(--light);
+        color: var(--dark);
         max-width: 220px;
         margin: 0;
     }
@@ -832,10 +986,10 @@ h1 {
     .footer-contacts {
         grid-column: 2;
         font-family: var(--inter);
-        font-weight: var(--light);
+        font-weight: var(--dark);
         font-size: 16px;
         letter-spacing: -0.04em;
-        color: var(--light);
+        color: var(--dark);
         margin: 0;
         padding-top: 40px;
 
@@ -844,10 +998,10 @@ h1 {
     .footer-mail {
         grid-column: 2;
         font-family: var(--inter);
-        font-weight: var(--light);
+        font-weight: var(--extrabold);
         font-size: 16px;
         letter-spacing: -0.04em;
-        color: var(--grey);
+        color: var(--dark);
         margin: 0;
         margin-bottom: 40px;
     }
@@ -859,7 +1013,7 @@ h1 {
         font-weight: var(--light);
         font-size: 16px;
         letter-spacing: -0.04em;
-        color: var(--grey);
+        color: var(--dark);
         text-align: right;  /* Выравнивание текста по правому краю */
         padding-right: 15px;
         margin-top: 135px;    
@@ -954,10 +1108,32 @@ h1 {
         width: 110px;
     }
 
+    .trust-title {
+        font-size: 60px;
+        max-width: 460px;
+    }
+
+    .trust-title::after {
+        width: 60px;
+        height: 60px;
+    }
+
+    .trust-container {
+        grid-template-columns: repeat(2, 1fr);
+    }    
+
+    .trust-textblock {
+        grid-column: 1;
+    }
+
+    .trust-textblock2 {
+        grid-column: 2;
+    }
 
     .trust-textblock3 {
-        margin-left: 30px;
+        margin-left: 0;
     }
+
 
     .products-header {
     display: block;
@@ -969,16 +1145,6 @@ h1 {
         display: block;
         max-width: 100%;
         margin-top: 20px;
-    }
-
-    .trust-title {
-        font-size: 60px;
-        max-width: 460px;
-    }
-
-    .trust-title::after {
-        width: 60px;
-        height: 60px;
     }
 
     .products-title {
@@ -1060,12 +1226,13 @@ h1 {
         border: 1px solid var(--dark); /* Добавлено для отображения рамки */
     }
 
+    @media (hover: hover) {
         .connect-btn:hover {
             font-size: 2px;
             color: transparent
         }
+    }
 
-    
     .connect-btn::before {
         content: ''; /* Обязательно для псевдоэлемента */
         position: absolute;  /* Абсолютное позиционирование внутри кнопки */
@@ -1079,10 +1246,12 @@ h1 {
         background-size: contain; /* Масштабируем иконку */
     }
 
-    .connect-btn:hover::after { 
-        background-color: var(--accent);
-        color: white;
-        border: var(--accent);
+    @media (hover: hover) {
+        .connect-btn:hover::after { 
+            background-color: var(--accent);
+            color: white;
+            border: var(--accent);
+        }
     }
 
     .hero {
@@ -1146,38 +1315,6 @@ h1 {
         padding-left: 24px;
     }
 
-    .trust-textblock {
-        margin-left: 24px;
-        max-width: 360px;
-        padding-right: 0;
-
-    }
-
-    .trust-textblock2 {
-        max-width: 360px;
-        margin-right: 15px;
-
-    }
-
-    .trust-container2 {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1440px;
-        box-sizing: border-box;
-    }
-        
-    .trust-textblock3 {
-        margin-left: 24px;
-        padding-right: 0;
-        max-width: 360px;
-    }
-
-    .trust-textblock4 { 
-        max-width: 360px;   
-        margin-right: 15px;
-    }
-
     .products-box {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1226,6 +1363,10 @@ h1 {
 
 /* MEDIA TABLET 600px */
 @media (max-width: 600px) {
+
+    .big-number {
+        font-size: 60px;
+    }
 
     .products-name {
         font-size: 20px;
@@ -1493,12 +1634,16 @@ h1 {
         width: 1px;
     }
 
-    .central-btn:hover #nav-line01 {
-        transform: translateY(4px);  /* Смещаем первую линию вниз на 8px */
+    @media (hover: hover) {
+        .central-btn:hover #nav-line01 {
+            transform: translateY(4px);  /* Смещаем первую линию вниз на 8px */
+        }
     }
 
-    .central-btn:hover #nav-line03 {
-        transform: translateY(-4px); /* Смещаем третью линию вверх на 8px */
+    @media (hover: hover) {
+        .central-btn:hover #nav-line03 {
+            transform: translateY(-4px); /* Смещаем третью линию вверх на 8px */
+        }
     }
 
     .trust-title {

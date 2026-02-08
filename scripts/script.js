@@ -99,3 +99,36 @@ function closeModal() {
 }
 
 
+// FAQ - РАСКРЫТИЕ ВОПРОСОВ
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Находим все заголовки аккордеона. Клик по заголовку (включая кнопку) будет открывать/закрывать.
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            // Находим кнопку внутри этого заголовка
+            const button = header.querySelector('.accordion-btn');
+            
+            // Находим родительский элемент .accordion (весь блок вопроса-ответа)
+            // Это нужно, чтобы найти "ответ" (.answer), который является соседом заголовка
+            const accordionItem = header.closest('.accordion'); 
+
+            // Находим блок с вопросом
+            const question = accordionItem.querySelector('.question'); 
+            
+            // Находим блок с ответом
+            const answer = accordionItem.querySelector('.answer');
+
+            // Переключаем класс 'active' на кнопке (для смены иконки)
+            button.classList.toggle('active');
+            
+            // Переключаем класс 'active' на блоке с ответом (для показа/скрытия текста)
+            answer.classList.toggle('active');
+
+            // Переключаем класс 'active' на блоке с вопросом(для показа/скрытия текста)
+            question.classList.toggle('active');
+        });
+    });
+});
+
