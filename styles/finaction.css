@@ -49,7 +49,6 @@ h1 {
 }
 
     .header {
-        position: relative;
         display: flex;
         align-items: center;
         padding-top: 20px;
@@ -64,7 +63,7 @@ h1 {
         .logo {
             display: block;
             flex-grow: 1;
-            margin: 0;
+            margin: 0 auto;
             width: 124px;
             height: 24px;
             background-image: url(../images/logo.svg);
@@ -74,12 +73,12 @@ h1 {
         }
 
         .central-btn {
-            position: absolute;
-            left: 50%;
+            /* position: absolute; */
+            /* left: 50%; */
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0;
+            margin: 0 auto;
             border: none;
             width: 50px;
             height: 50px;
@@ -142,7 +141,7 @@ h1 {
             background-color: var(--dark);
             color: white;
             height: 40px;
-            width: 169px;
+            width: 200px;
             align-items: center;
             border: none;
             border-radius: 4px;
@@ -173,6 +172,9 @@ h1 {
 
 
         .connect-btn {
+            display: flex;          /* Добавляем flex */
+            justify-content: center; /* Центрируем текст по умолчанию */
+            box-sizing: border-box;
             height: 40px;
             width: 169px;
             align-items: center;
@@ -181,102 +183,76 @@ h1 {
             border-radius: 4px;
             margin-left: 20px;
             border: 1px solid var(--dark); 
-            transition: background-color 0.4s ease, color 0.4s ease;
-
-            display: flex;          /* Добавляем flex */
-            justify-content: center; /* Центрируем текст по умолчанию */
+            transition: var(--tr);
+            cursor: pointer;
 
         }
+
 
         @media (hover: hover) {
             .connect-btn:hover {
                 background-color: var(--accent);
-                color: white;
+                color: var(--light);
                 border: var(--accent);
             }
         }
+  
 
-/* HERO */
+/* HERO-FINACTION */
 
-.hero {
+.hero-finaction {
     position: relative;
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box; 
     max-width: 1920px;
     height: 100vh; /* убрать, чтобы была анимация фона */
     max-height: 720px;
     margin: 0 auto;
-    background-image: url(../images/hero_image.jpg);
-    background-repeat: no-repeat;
+    background-color: var(--dark);
     background-size: cover;
     background-position: center center;
-    text-align: left;
+    text-align: center;
     border-radius: 4px;
-    padding-left: 60px;
-}    
-
-    .bracket-up {
-        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
-        max-width: 1440px;
-        margin: 0 auto;
-        left: 40px;
-        top: 100px;
-        background-image: url(../images/bracket-up.svg); /* Путь к иконке */
-        background-repeat: no-repeat;
-        background-size: contain;
-        width: 80px;  /* Начальный размер иконки*/
-        height: 80px;    /* Начальный размер иконки*/  
-        filter: blur(4px);
-        
-        /*Начальное положение анимации*/
-        transform: translate(0, 0);
-        transition: transform 2s;
-    }
-
-    .bracket-up.animate {
-        transform: translate(30px, 30px);
-    }
-
-    .bracket-down {
-        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
-        max-width: 1440px;
-        margin: 0 auto;
-        left: 560px;
-        bottom: 300px;
-        background-image: url(../images/bracket-down.svg); /* Путь к иконке */
-        background-repeat: no-repeat;
-        background-size: contain;
-        width: 80px;  /* Начальный размер иконки*/
-        height: 80px;    /* Начальный размер иконки*/  
-        filter: blur(4px);
-        
-        /*Начальное положение анимации*/
-        transform: translate(30px, 30px);
-        transition: transform 2s;
-    }
-
-    .bracket-down.animate {
-        transform: translate(0, 0);
-    }
-
+    
+}
 
     .hero-text {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         max-width: 1440px;
         margin: 0 auto;
-        padding-top: 150px;
+        padding-top: 120px;
         padding-bottom: 200px;
-        padding-left: 40px;
         
        
     }
+
+        .finaction-name {
+            align-items: center;
+            text-align: center; 
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
+            color: var(--dark);
+            font-weight: var(--regular);
+            font-size: 18px;
+            line-height: 167%;
+            background-color: var(--accent2);
+            margin: 0;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+
+        }
+
 
         .hero-title {
             max-width: 1440px;
             font-family: var(--inter);
             font-weight: var(--light);
-            text-align: left;
+            align-items: center;
+            text-align: center;
             font-size: 20px; /* Начальный размер шрифта*/
             letter-spacing: -0.04em;
             text-transform: uppercase;
@@ -305,7 +281,7 @@ h1 {
             line-height: 170%;
             letter-spacing: 0.01em;
             text-transform: uppercase;
-            color: var(--light);
+            color: var(--grey);
             
             /* Стили для анимации */
             opacity: 0; /* Начальная прозрачность (невидимый) */
@@ -375,8 +351,19 @@ h1 {
             }
         }
 
+    .arrow {
+        background-image: url(../images/finaction/arrow-accent2.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 80px;
+        height: 80px;
+        transform: rotate(-135deg);
+    }
 
-    .line {
+
+
+
+    /* .line {
         background-image: url(../images/line.svg);
         background-repeat: no-repeat;
         background-size: contain;
@@ -387,7 +374,7 @@ h1 {
         left: 50%;
         transform: translate(-50%, -50%);
         bottom: -120px;
-    }
+    } */
 
 /* TRANSITION */
 
@@ -743,10 +730,8 @@ h1 {
             justify-content: center; /* Центрируем текст по умолчанию */
             min-height: 40px;
             width: 120px;
-            box-sizing: border-box;
             align-items: center;
             background-color: white;
-            font-weight: var(--regular);
             color: var(--dark);
             margin: 0;
             margin-left: 35px;
@@ -761,7 +746,6 @@ h1 {
             .fa-btn:hover {
                 background-color: var(--accent);
                 color: white;
-                border: 1px solid var(--accent);
                 border: var(--accent);
             }
         }
