@@ -1,0 +1,295 @@
+:root {
+    --inter: "Inter", sans-serif;
+    
+    --extralight: 200;
+    --light: 300;
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
+    --extrabold: 800;
+    --black: 900; 
+    
+    --accent: #4466B2;
+    --accent2: #F0FF97;
+    --accent3: #5F7DC1;
+    --dark: #272727;
+    --light: #FFFFFF;
+    --background: #F8F8F8;
+    --grey: #B6B6B6;
+    --grey-light: #ECECEC;
+    --grey-dark: #8b8b97;
+
+    --tr: .4s;
+
+}
+
+body {
+    font-family: var(--inter);
+    font-weight: var(--extralight);
+    background-color: var(--background);
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box; 
+}
+
+    .header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        justify-content: space-between;
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+
+    }
+
+    /* Класс, который делает header фиксированным при скролле вверх */
+    .header-fixed {
+        position: fixed !important;
+        background-color: var(--background);
+        top: 0;
+        left: 0;
+        border-bottom: 1px solid var(--dark);
+        width: 100%;
+        z-index: 1000;
+        /* Плавное появление (можно добавить анимацию) */
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    /* Чтобы контент не прыгал, когда header становится фиксированным, добавляем padding-top на body */
+    body.header-fixed-padding {
+        padding-top: 60px; /* замените на реальную высоту вашего header */
+    }
+
+        .logo {
+            
+            display: block;
+            flex-grow: 1;
+            margin: 0 auto;
+            width: 124px;
+            height: 24px;
+            background-image: url(../images/logo.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            
+        }
+
+        .central-btn {
+            position: absolute;
+            left: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: none;
+            width: 50px;
+            height: 50px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            background-color: transparent;
+            cursor: pointer; /* Добавим курсор */ 
+            transform: translateX(-50%);
+        }
+
+
+            .nav-line01 {
+            background-color: var(--dark);
+            width: 50px;
+            height: 2px;
+            border: none;
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transform-origin: center center;
+            }
+
+            .nav-line02 {
+            background-color: var(--dark);
+            width: 50px;
+            height: 2px;
+            border: none;
+     
+            }
+
+            .nav-line03 {
+            background-color: var(--dark);
+            width: 50px;
+            height: 2px;
+            border: none;
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transform-origin: center center;
+            }
+
+            @media (hover: hover) {
+                .central-btn:hover #nav-line01 {
+                    transform: translateY(8px);  /* Смещаем первую линию вниз на 8px */
+                }
+            }
+
+            @media (hover: hover) {
+                .central-btn:hover #nav-line03 {
+                    transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
+                }
+            }
+
+        .presentation-btn {
+            display: flex;
+            font-size: 16px;
+            background-color: var(--dark);
+            color: white;
+            height: 40px;
+            width: 200px;
+            align-items: center;
+            border: none;
+            border-radius: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+            gap: 11px;
+            transition: var(--tr);
+            cursor: pointer;
+            justify-content: center;
+        }
+
+
+        /* Отключаем hover для мобильных устройств */
+        @media(hover: hover) {
+            .presentation-btn:hover {
+                background-color: var(--accent);
+            }
+        }
+
+
+        .connect-btn {
+            display: flex;          /* Добавляем flex */
+            justify-content: center; /* Центрируем текст по умолчанию */
+            box-sizing: border-box;
+            height: 40px;
+            width: 169px;
+            align-items: center;
+            background-color: white;
+            color: var(--dark);
+            border-radius: 40px;
+            margin-left: 20px;
+            border: 1px solid var(--dark); 
+            transition: var(--tr);
+            cursor: pointer;
+
+        }
+
+
+        @media (hover: hover) {
+            .connect-btn:hover {
+                background-color: var(--accent);
+                color: var(--light);
+                border: 1px solid var(--accent);
+            }
+        }
+
+/* ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ */
+
+.title-section {
+    display: grid;
+    grid-template-columns: 50% 50%; /* первая колонка 50%, остальные по 25% */ 
+    grid-template-rows: auto;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 80px; 
+    box-sizing: border-box;
+}
+.back-to-main {
+    grid-column: 1;
+    display: inline-block;
+    justify-self: start;  /* сужаем по ширине */
+    align-self: end;     /* сужаем по высоте — убираем растяжение */
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    font-weight: var(--regular);
+    text-transform: uppercase;
+    color: var(--grey-dark);
+    margin: 0;   
+}
+
+/* применяем hover только для ПК (есть курсор) */
+@media(hover: hover) {
+    .back-to-main:hover {
+        color: var(--accent);
+    }
+}
+
+
+.section-title {
+    grid-column: 2;
+    font-size: 40px;
+    letter-spacing: -0.06em;
+    font-weight: var(--extrabold);
+    text-transform: uppercase;
+    color: var(--dark);
+    margin: 0;  
+    padding: 0;
+}
+
+.line {
+    border-bottom: 1px solid var(--dark);
+}
+
+.subtitle-section {
+    display: grid;
+    grid-template-columns: 50% 50%; /* первая колонка 50%, остальные по 25% */ 
+    grid-template-rows: auto;
+    margin: 0 auto;
+    margin-top: 20px; 
+    box-sizing: border-box;
+}
+
+.subtitle {
+    grid-column: 2;
+    font-size: 18px;
+    /* letter-spacing: -0.06em; */
+    text-transform: uppercase;
+    font-weight: var(--medium);
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+
+.paragraph {
+    grid-column: 2;
+    font-size: 12px;
+    font-weight: var(--light);
+    color: var(--dark);
+    margin: 10px 0;
+    padding: 0;
+}
