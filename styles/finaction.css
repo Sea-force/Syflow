@@ -1,6 +1,6 @@
 :root {
     --inter: "Inter", sans-serif;
-    --inter: "Orbitron", sans-serif;
+    --orbitron: "Orbitron", sans-serif;
     
     --extralight: 200;
     --light: 300;
@@ -45,6 +45,11 @@ h3 {
     padding: 0;
 }
 
+h5 {
+    margin: 0;
+    padding: 0;
+}
+
 /* HEADER */
 
 .container {
@@ -59,6 +64,7 @@ h3 {
     .header {
         position: relative;
         display: flex;
+        background-color: var(--grey-light);
         align-items: center;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -72,7 +78,7 @@ h3 {
     /* Класс, который делает header фиксированным при скролле вверх */
     .header-fixed {
         position: fixed !important;
-        background-color: var(--background);
+        background-color: var(--grey-light);
         top: 0;
         left: 0;
         border-bottom: 1px solid var(--dark);
@@ -199,7 +205,7 @@ h3 {
             height: 40px;
             width: 169px;
             align-items: center;
-            background-color: white;
+            background-color: var(--background);
             color: var(--dark);
             border-radius: 40px;
             margin-left: 20px;
@@ -225,8 +231,8 @@ h3 {
     position: relative;
     box-sizing: border-box; 
     max-width: 1920px;
-    height: 100vh; /* убрать, чтобы была анимация фона */
-    max-height: 720px;
+    height: 100vh;  /* убрать, чтобы была анимация фона */
+    max-height: 740px;
     margin: 0 auto;
     background-color: var(--dark);
     background-size: cover;
@@ -237,7 +243,7 @@ h3 {
     
 }
 
-/* Контейнер для луча */
+/* Сам луч – горизонтальный, идёт слева направо, сужается */
 /* Контейнер луча */
 .amorphous-blob {
     position: absolute;
@@ -250,19 +256,6 @@ h3 {
     overflow: hidden;
 }
 
-/* Сам луч – горизонтальный, идёт слева направо, сужается */
-/* Контейнер для луча */
-.amorphous-blob {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2;
-    overflow: hidden;  /* чтобы луч не вылезал за пределы секции */
-}
-
 /* Сам луч – широкая полоса у левого края, сужающаяся вправо */
 .amorphous-blob::before {
     content: '';
@@ -270,7 +263,7 @@ h3 {
     left: -10%;         /* небольшой вылет за левый край, чтобы не было резкого обрыва */
     top: 0;
     width: 100%;        /* занимает 80% ширины секции, сужаясь */
-    height: 30%;
+    height: 50%;
     
     /* Градиент: слева яркий, справа прозрачный — создаёт эффект сужения */
     background: linear-gradient(90deg, 
@@ -342,8 +335,8 @@ h3 {
             font-size: 160px;
             margin: 0 auto;
             padding: 0;
-            margin-top: 30px;
-            padding-top: 60px;
+            /* margin-top: 30px; */
+            padding-top: 40px;
         }
 
         .left-align {
@@ -378,7 +371,7 @@ h3 {
         .terminal-cursor {
             display: inline-block;
             width: 0.6em;          /* ширина примерно как у буквы */
-            height: 0.9em;
+            height: 0.8em;
             background-color: var(--grey-light);
             /* vertical-align: middle; */
             margin-left: 4px;
@@ -543,20 +536,30 @@ h3 {
     opacity: 1;
 }
 
-
+    /* Базовое состояние — скрыто и смещено вправо */
     .arrow {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
         box-sizing: border-box; 
         background-image: url(../images/finaction/arrow-accent2.png);
         background-repeat: no-repeat;
         background-size: contain;
         width: 80px;
         height: 80px;
-        margin-top: 40px;
-        margin-bottom: 20px;
-        transform: rotate(-90deg);       
-        margin-left: calc(50vw - 120px);
+        /* padding-top: 40px; */
+        margin-bottom: 40px;
+        transform: translateX(40px) rotate(-90deg); /* сдвиг вправо + поворот */       
+        opacity: 0;
+        transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
+    /* Появившееся состояние */
+        .arrow.visible {
+        opacity: 1;
+        transform: translateX(0) rotate(-90deg);
+    }
+    
             /* применяем hover только для ПК (есть курсор) */
         @media(hover: hover) {
             .products-btn:hover {
@@ -572,7 +575,7 @@ h3 {
     grid-template-columns: 50% 50%; /* первая колонка 50%, остальные по 25% */ 
     grid-template-rows: auto;
     margin: 0 auto;
-    margin-top: 80px; 
+    margin-top: 60px; 
     box-sizing: border-box;
     
 
@@ -595,24 +598,11 @@ h3 {
 }
 
 
-
-
-
-
-
-
 .section-title {
     grid-column: 2;
-
     font-size: 60px;
     letter-spacing: -0.06em;
     line-height: 110%;
-    
-
-
-    /* font-size: 80px;
-    letter-spacing: -0.02em;
-    line-height: 100%; */
     text-transform: uppercase;
     font-weight: var(--regular);
     color: var(--dark);
@@ -632,6 +622,27 @@ h3 {
     transform: translateY(0);
     }
 
+.strike-word {
+    position: relative;
+    display: inline-block;
+}
+
+.strike-word::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(var(--strike-percent, 0) * 1%); /* ширина от 0% до 100% */
+    height: 20px;
+    background-color: #272727;
+    transition: width 0.1s linear; /* или совсем без transition для моментального следования скроллу */
+    pointer-events: none;
+}
+
+
+
+
 
 /* НАШИ ПРОДУКТЫ */
 
@@ -646,39 +657,92 @@ h3 {
     margin: 0 auto;
     /* margin-top: 20px; */
     box-sizing: border-box;
-
 }
 
 /* Левая колонка (1, 3, 5… элементы) получают отступ справа */
-.products-box > .decision-item:nth-child(odd) {
+    .products-box > .decision-item:nth-child(odd) {
     margin-right: 30px;
 }
+
 
 .decision-item {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-direction: column;
     align-items: flex-start;
-    max-height: 400px;
+    min-height: 200px;
+    max-height: 800px;
     /* max-width: 500px; */
     background-color: var(--light);
     border: 1px solid var(--grey);
     padding: 20px 20px;
-    /* margin-right: 60px; */
-    box-sizing: border-box;
+    /* margin-right: 60px;  */
+    /* box-sizing: border-box; */
     margin-bottom: 30px;
+
+
+/* Базовое состояние — скрыт и смещён вниз */
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+    /* Видимое состояние — появляется */
+    .decision-item.revealed {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+    }
+
+
+
+    .number {
+        display: inline-block;
+        font-family: var(--orbitron);
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 125%;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        background-color: var(--dark);
+        color: var(--grey-light);
+        margin: 0 0 10px 0;
+        padding: 0;
+    }
+
+
+
+    .number-add {
+        display: inline-block;
+        color: var(--grey);
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .products-name {   
+        margin: 0 0 auto 0;
+        padding: 0;
+        padding-bottom: 60px;
+        font-weight: var(--regular);
+        font-size: 30px;
+        line-height: 110%;
+        text-transform: uppercase;
+        color: var(--dark);   
+        z-index: 1; 
+    }
 
 
 .decision-description {
     color: var(--dark);
-    max-width: 500px;
+    max-width: 600px;
     line-height: 125%;
-    margin: 0;
+    margin: auto 0 0 0;
     padding: 0;
     z-index: 1;
-
 }
 
 /* Уголки — общие стили */
@@ -762,21 +826,6 @@ h3 {
 
 
 
-
-
-    .products-name {
-    
-        margin: 0;
-        padding-bottom: 40px;
-        font-weight: var(--regular);
-        font-size: 30px;
-        line-height: 110%;
-        text-transform: uppercase;
-        color: var(--dark);   
-        z-index: 1; 
-    }
-
-
         .fa-btn {
             display: flex;          /* Добавляем flex */
             justify-content: center; /* Центрируем текст по умолчанию */
@@ -812,36 +861,46 @@ h3 {
         max-width: 1300px;
         margin:0;
         padding:0;
+        padding-left: 50vw;
         margin-top: 40px; 
         box-sizing: border-box;
+    
+        /* Базовое состояние — скрыт и смещён вниз */
+        opacity: 0;
+        filter: blur(4px);
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
+    /* Видимое состояние — появляется */
+    .details.revealed {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+        }
 
+
+        .arrow2 {
+        content: '';
+        display: block;       
+        margin: 20px 0px;       
+        width: 60px;
+        height: 60px;
+        background-image: url(../images/finaction/arrow-black.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 
     .details-info {
-        padding-left: 50vw;
         font-size: 18px;
         line-height: 160%;
         font-weight: var(--light);
         color: var(--dark); 
-        margin:0;
+        margin:0;     
         margin-right: 60px;
         margin-bottom: 80px;
         text-transform: uppercase;
-        box-sizing: border-box;
-
-    }
-    
-    .details-info::before {
-        content: '';
-        display: block;
-        margin: 10px 0px;
-        width: 40px;
-        height: 40px;
-        background-image: url(../images/finaction/arrow-accent1.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        transform: rotate(180deg);
     }
 
         .highlight {
@@ -851,6 +910,24 @@ h3 {
     }
     
 /* DASHBOARD */
+
+    /* Базовое состояние — скрыт и смещён вниз */
+    .dashboard {
+        opacity: 0;
+        filter: blur(4px);
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Видимое состояние — появляется */
+    .dashboard.revealed {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+
+
 .dashboard-name {
     display: inline-block;
     font-size: 16px;
@@ -881,11 +958,13 @@ h3 {
 }
 
 .dashboard-video {
+    /* object-fit:contain; */
     width: 100%;
     max-width: 1440px; /* или по вашему дизайну */
     height: auto;
     margin-top: 20px;
     margin-bottom: 40px;
+    background-color: var(--grey-light);
 }
 
 
@@ -928,7 +1007,7 @@ h3 {
         /* border-radius: 40px; */
         margin: 0;
         margin-bottom: 12px;
-        padding: 8px 24px;
+        padding: 4px 8px;
     }
 
 
@@ -973,16 +1052,11 @@ h3 {
     }
 
 
-
-
-
-
 /* FOOTER */
 
 .footer {
     background-color: var(--grey-light);
     max-width: 1920px;
-    height: 200px;
     width: 100%;
     margin: 0 auto;
 }
@@ -992,19 +1066,22 @@ h3 {
     grid-template-columns: 50% 25% 25%; /* первая колонка 50%, остальные по 25% */
     max-width: 1440px; /* максимальная ширина контейнера */
     width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
-    margin: 0 auto; /* центрирование контейнера */
+    margin: 20px auto; /* центрирование контейнера */
+    
 }
     .logo-footer {
         grid-column: 1;
         display: flex;
-        max-width: 247px;
-        max-height: 49px;
+        /* align-self: center;           */
+        text-align: center;
+        width: 247px;
+        height: 49px;
         background-image: url(../images/logo-footer-dark.png);
         background-repeat: no-repeat;
         background-size: contain;
-        margin-top: 75px;
         z-index: 1;
-
+        margin-top: auto;
+        margin-bottom: auto;       
     }
 
     .site {
@@ -1021,7 +1098,7 @@ h3 {
         justify-content: space-between;
         align-items: flex-start;
         margin: 0;
-        padding-top: 40px;
+        /* padding-top: 40px; */
     }
 
     .footer-politics {
@@ -1043,12 +1120,13 @@ h3 {
 
     .footer-contacts {
         grid-column: 2;
+        
         font-weight: var(--dark);
         font-size: 16px;
         letter-spacing: -0.04em;
         color: var(--dark);
         margin: 0;
-        padding-top: 40px;
+        /* padding-top: 40px; */
 
     }
 
@@ -1058,21 +1136,24 @@ h3 {
         align-items: center;
         flex-wrap: nowrap;   /* ← запрещаем перенос на новую строку */
         gap: 30px;
+        margin-top: 20px;
+    }
+
+    .contacts-zone {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
     }
 
 
     .footer-mail {
-        /* display: inline-block; */
-        /* grid-column: 2; */
         font-weight: var(--medium);
         font-size: 18px;
         text-transform: uppercase;
         text-decoration: none;
-        /* letter-spacing: -0.04em; */
         transition: color 0.2s;
         color: var(--dark);
         margin: 0;
-        /* margin-bottom: 40px; */
     }
 
 
@@ -1080,12 +1161,12 @@ h3 {
         grid-column: 3;
         text-transform: uppercase;
         font-weight: var(--light);
-        font-size: 16px;
+        font-size: 14px;
         letter-spacing: -0.04em;
-        color: var(--dark);
+        color: var(--grey-dark);
         text-align: right;  /* Выравнивание текста по правому краю */
-        padding-right: 15px;
-        margin-top: 135px;    
+        align-self: end; 
+        /* padding-right: 15px; */    
     }
 
 
@@ -1229,9 +1310,6 @@ h3 {
 }
 
 
-
-
-
 /* Правая панель */
 .modal-right {
     position: relative;
@@ -1315,30 +1393,7 @@ h3 {
 }
 
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    .modal-content {
-        grid-template-columns: 1fr;
-        padding: 32px 24px;
-        gap: 48px;
-    }
-
-    .close-button {
-        top: -8px;
-        right: 0px;
-    }
-
-    .nav-link {
-        font-size: 24px;
-    }
-
-    .modal-logo {
-        width: 140px;
-    }
-}
-
-
-/* Модальное окно */
+/* Модальное окно СВЯЗАТЬСЯ / ДЕМО */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1440,9 +1495,6 @@ h3 {
 }
 
 
-
-
-
 .modal-close:hover {
     color: #fff;
     background-color: #1e1e2a;
@@ -1504,7 +1556,7 @@ h3 {
     gap: 8px;
     cursor: pointer;
     font-weight: normal !important;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.6;
     color: var(--grey-dark);
     letter-spacing: -0.06em;
@@ -1544,7 +1596,6 @@ body.modal-open {
 }
 
 
-
 .cursor-circle {
     position: fixed;      /* относительно окна браузера */
     top: -3px;
@@ -1559,64 +1610,70 @@ body.modal-open {
     will-change: transform;
 }
 
-/* скрытия кружка у курсора, если сайт открыт с телефона*/
-@media (hover: none) and (pointer: coarse) {
-    .cursor-circle {
-        display: none;
-    }
+    /* скрытия кружка у курсора, если сайт открыт с телефона*/
+    @media (hover: none) and (pointer: coarse) {
+        .cursor-circle {
+            display: none;
+        }
+
 }
+
+
 
 
 /* MEDIA 1080px*/
 @media (max-width: 1080px) {
+
+    .presentation-btn {
+        width: 180px;
+    }
 
     .container {
         padding-left: 30px;
         padding-right: 30px;
     }
 
-    .hero {
-        padding-left: 30px;
+
+    .finaction-name {
+        font-size: 120px;
     }
 
-    .bracket-up {
-        left: 10px;
+    .hero-title {
+        letter-spacing: 0.04em;
+        text-transform: uppercase;       
+        font-size: 30px;
     }
 
-    .bracket-down {
-        left: 530px;
+    .hero-bullit2 {
+        margin-top: 40px;
     }
+
+    .arrow {
+        width: 60px;
+        height: 60px;
+        margin: 0;
+        margin-bottom: 40px;
+    }
+
+    .arrow2 {
+        width: 40px;
+        height: 40px;
+
+    }
+
+    .details {
+        margin-top: 0px;       
+    }
+
+
+    .details-info {
+        margin-bottom: 60px;
+    }
+
 
     .connect-btn {
         width: 110px;
     }
-
-    .trust-title {
-        font-size: 60px;
-        max-width: 460px;
-    }
-
-    .trust-title::after {
-        width: 60px;
-        height: 60px;
-    }
-
-    .trust-container {
-        grid-template-columns: repeat(2, 1fr);
-    }    
-
-    .trust-textblock {
-        grid-column: 1;
-    }
-
-    .trust-textblock2 {
-        grid-column: 2;
-    }
-
-    .trust-textblock3 {
-        margin-left: 0;
-    }
-
 
     .products-header {
     display: block;
@@ -1631,21 +1688,81 @@ body.modal-open {
         font-size: 60px;
     }
 
-    .products-box {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-        gap: 30px 30px;
-        margin: 0;
-
-    }
 
     .ready-items {
         padding: 30px 30px;
     }
 
 
+    /* Левая колонка (1, 3, 5… элементы) получают отступ справа */
+    .products-box > .decision-item:nth-child(odd) {
+        margin-right: 30px;
+    }
+
+    .decision-item {
+        margin-right: 30px;
+    }
+
+
+    .full-year {
+        font-size: 0;
+    }
+
 }
+
+
+/* MEDIA 980px*/
+@media (max-width: 980px) {
+
+    .hero-finaction {
+        box-sizing: content-box; 
+    }
+
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    
+    .hero-bullit2 {
+        margin-top: 40px;
+        margin-left: 480px;
+    }
+
+    .details-info {     
+        font-size: 16px;
+    }
+
+}
+
+
+/* MEDIA 800px*/
+@media (max-width: 800px) {
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-bullit1 {
+        max-width: 320px;
+    }
+
+    .hero-bullit2 {
+        max-width: 240px;
+        margin-left: 60%;
+    }
+
+.footer-year {
+    grid-column: 1;
+    text-align: left;
+}
+
+    .full-year {
+        font-size: 14px;
+    }
+
+}
+
+
 
 /* MEDIA TABLET 768px*/
 @media (max-width: 768px) {
@@ -1655,80 +1772,38 @@ body.modal-open {
         padding-right: 24px;
     }
 
-    .presentation-btn {
-        width: auto; /* Автоматическая ширина */
-        padding-left: 15px;
-        padding-right: 15px;
-        font-size: 14px;
-        justify-content: center; /* Центрируем текст */
-        visibility: hidden; /* Скрываем текст */
+
+    .finaction-name {
+        font-size: 100px;
     }
 
-    .presentation-btn::before {
-        display: none; /* Скрываем псевдоэлемент */
+    .hero-title {
+        letter-spacing: 0.04em;
+        text-transform: uppercase;       
+        font-size: 26px;
     }
 
-    /* Заменяем текст кнопки (можно и через JS) */
-    .presentation-btn::after {
-        content: "pdf"; /* Меняем текст */
-        visibility: visible; /* Отображаем "pdf" */
-        display: flex;
-        font-size: 14px;
-        background-color: var(--dark);
-        color: white;
-        height: 40px;
-        width: 40px;
-        align-items: center;
-        border: none;
-        border-radius: 4px;
-        transition: var(--tr);
-        justify-content: center;    
+
+    .title-group {
+        margin-left: 48px;
     }
 
-        /* применяем hover только для ПК (есть курсор) */
-        @media(hover: hover) {
-            .presentation-btn:hover::after {
-                background-color: var(--accent);
-            }
-        }
+
+
+    .hero-bullit1 {
+        max-width: 260px;
+    }
+
+    .hero-bullit2 {
+        margin-top: 20px;
+        margin-left: 50%;
+    }
+
 
     .connect-btn {
-        width: 40px; /* Ширина кнопки = ширине иконки */
-        height: 40px; /* Высота кнопки = высоте иконки */
-        border-radius: 4px;
-        color: transparent;  /* Скрываем текст */
-        position: relative;  /* Позиционирование иконки */
-        background-color: var(--dark);
-        border: 1px solid var(--dark); /* Добавлено для отображения рамки */
+        display: none; 
     }
 
-    @media (hover: hover) {
-        .connect-btn:hover {
-            font-size: 2px;
-            color: transparent
-        }
-    }
-
-    .connect-btn::before {
-        content: ''; /* Обязательно для псевдоэлемента */
-        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
-        top: 50%;           /* Центрируем по вертикали */
-        left: 50%;          /* Центрируем по горизонтали */
-        transform: translate(-50%, -50%); /* Точное центрирование */
-        width: 20px;        /* Ширина иконки */
-        height: 16px;       /* Высота иконки */
-        background-image: url(../images/letter.svg); /* Путь к иконке */
-        background-repeat: no-repeat;
-        background-size: contain; /* Масштабируем иконку */
-    }
-
-    @media (hover: hover) {
-        .connect-btn:hover::after { 
-            background-color: var(--accent);
-            color: white;
-            border: var(--accent);
-        }
-    }
 
     .hero {
     padding-left: 24px;
@@ -1736,44 +1811,50 @@ body.modal-open {
 
     .products-header {
         margin-top: 60px;  
-}
+    }
+
+    .details-info {     
+        font-size: 14px;
+        margin-right: 24px;
+
+    }
+
+
+    .section-title {
+        font-size: 40px;
+    }
+
+    .ready-title {
+        font-size: 40px;
+    }
+
+    .dashboard-title {
+        font-size: 40px;
+    }
+
+    .we-decide {
+        margin-top: 40px;
+    }
+
 
 }
+
+
 
 /* MEDIA TABLET 730px */
 @media (max-width: 730px) {
 
-    .hero {
-        height: 70vw;
+    .finaction-name {
+        font-size: 80px;
     }
 
-    .bracket-up {
-        left: 10px;
-        top: 50px;
-        width: 50px; 
-        height: 50px; 
-    }
-
-    .bracket-down {
-        left: 420px;
-        bottom: 0;
-        top: 230px;
-        width: 50px; 
-        height: 50px;
+    .hero-title {     
+        font-size: 20px;
     }
 
 
-    .hero-text {
-        padding-top: 100px;
-        /* padding-bottom: 60px; */
-    }
-
-    .hero-title {
-        font-size: 10px; /* Начальный размер шрифта*/
-    }
-
-    .hero-title.loaded {
-        font-size: 60px; /* Конечный размер шрифта для маленьких экранов */
+    .hero-bullit2 {
+        margin-top: 40px;       
     }
 
 
@@ -1787,28 +1868,30 @@ body.modal-open {
         max-width: 460px;
     }
 
-    .trust-title {
-        padding-left: 24px;
-    }
 
     .products-box {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
-        gap: 15px 15px;
+        /* gap: 15px 15px; */
     }
 
     .decision-item {
         padding: 15px 15px;
     }
 
-
     .products-name {
-        font-size: 30px;
+        padding-bottom: 40px;
+        font-size: 20px;
+    }
+
+    .decision-description {
+        font-size: 14px;
     }
 
     .footer-politics {
         font-size: 14px;
+         max-width: 180px;
     }
 
     .footer-contacts {
@@ -1820,20 +1903,80 @@ body.modal-open {
     }
 
     .footer-year {
-        font-size: 12px;
+        font-size: 0;
     }
+
+    .full-year {
+        font-size: 0;
+    }
+
+    .mail-icon {  
+        width: 30px;        /* Ширина иконки */
+        height: 30px;       /* Высота иконки */ 
+    }
+
+    .tg-icon {  
+        width: 30px;        /* Ширина иконки */
+        height: 30px;       /* Высота иконки */ 
+    }
+
+    .footer-contacts-pull {
+        gap: 20px;
+    }
+
+
+/* МОДАЛЬНОЕ ОКНО ДЛЯ BURGER     */
+.modal-content {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+       
+    }
+
+    /* Правая панель — выше */
+    .modal-right {
+        order: 1;
+    }
+
+    /* Левая панель — ниже */
+    .modal-left {
+        order: 2;
+        gap: 40px;
+    }
+
+    .close-button {
+        top: -40px;
+        left: 50%; 
+        transform: translateX(-50%);
+    }
+
+    .nav-link {
+        font-size: 24px;
+    }
+
+    .modal-logo {
+        display: none;
+    }
+
+    .soon-link {
+        font-size: 24px;
+    }
+
 }
 
 
 /* MEDIA TABLET 600px */
 @media (max-width: 600px) {
 
+    .header {
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+    }
     .big-number {
         font-size: 60px;
-    }
-
-    .products-name {
-        font-size: 20px;
     }
 
     .fa-btn {
@@ -1854,15 +1997,34 @@ body.modal-open {
         margin: 0;
     }
 
+        /* Левая колонка (1, 3, 5… элементы) получают отступ справа */
+    .products-box > .decision-item:nth-child(odd) {
+        margin-right: 24px;
+    }
+
+    .decision-item {
+        margin-bottom: 24px;
+    } 
+
+    .presentation-btn {
+        height: 30px;
+        width: 140px;
+        font-size: 12px;
+    }
+
+    .checkbox-label {
+        font-size: 12px;
 }
 
+
+}
 
 
 @media (max-width: 500px) {
 
     .header {
-        padding-top: 4px;
-        padding-bottom: 4px;
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     .logo {
@@ -1870,38 +2032,44 @@ body.modal-open {
         height: 12px;
     }
 
-    .presentation-btn::after {
+    .central-btn {
+        width: 25px;           /* Было 50px */
+        height: 25px;          /* Было 50px */
+        padding-top: 6px;      /* Было 16px */
+        padding-bottom: 6px;   /* Было 16px */
+    }
+
+    .nav-line01,
+    .nav-line02,
+    .nav-line03 {
+        width: 25px;           /* Было 50px */
+    }
+
+    /* Корректируем смещение при наведении (пропорционально) */
+    .central-btn:hover #nav-line01 {
+        transform: translateY(4px);  /* Было 8px */
+    }
+
+    .central-btn:hover #nav-line03 {
+        transform: translateY(-4px); /* Было -8px */
+    }
+
+    .presentation-btn {
+        width: fit-content;
         font-size: 12px;
-        height: 30px;
-        width: 30px;
-    } 
-
-    .connect-btn {
-        width: 30px; 
-        height: 30px;
-        margin: 0;
+        background-color: var(--grey-light);
+        color: var(--dark);
         padding: 0;
-        font-size: 5px; /* Невидимый текст "Связаться" */
+        border-radius: 0;
+        gap: 0;
     }
 
-    .connect-btn::before {
-        width: 16px;      
-        height: 12px;
+    .finaction-name {
+        font-size: 60px;
     }
 
-    .bracket-up {
-        left: 0;
-        top: 40px;
-        width: 30px; 
-        height: 30px; 
-    }
-
-    .bracket-down {
-        left: 300px;
-        bottom: 0;
-        top: 190px;
-        width: 30px; 
-        height: 30px;
+    .hero-title {     
+        font-size: 16px;
     }
 
     .hero-text {
@@ -1910,16 +2078,12 @@ body.modal-open {
         padding-left: 20px;
     }
 
-    .hero-title {
-        font-size: 10px; /* Начальный размер шрифта*/
-    }
-
-    .hero-title.loaded {
-        font-size: 40px; /* Конечный размер шрифта для маленьких экранов */
-    }
-
     .hero-description {
         max-width: 310px;
+        font-size: 12px;
+    }
+
+    .decision-description {
         font-size: 12px;
     }
 
@@ -1942,28 +2106,50 @@ body.modal-open {
         margin: 40px auto;
     }
 
-    .trust-title {    
-        font-size: 48px;
-        max-width: 300px;
-        padding-left: 24px;
+    .details-info {     
+        font-size: 11px;
+         margin-right: 24px;
+         margin-bottom: 40px;
     }
 
-    .trust-title::after {
+    .arrow {
         width: 40px;
         height: 40px;
+        margin: 0;
+        margin-bottom: 20px;
     }
 
-    .trust-container2 {
-        margin-top: 30px;
+    .arrow2 {
+        width: 30px;
+        height: 30px;
+
     }
 
-    .trust-textblock {
-        margin-top: 30px;
+    .section-name {
+        font-size: 14px;
     }
 
-    .trust-textblock2 {
-        margin-top: 30px;
+    .dashboard-name {
+        font-size: 14px;
     }
+
+    .dashboard-text {
+        font-size: 14px;
+    }
+
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .dashboard-title {
+        font-size: 32px;
+    }
+
+    .ready-title {
+        font-size: 32px;
+    }
+
 
     .number-text {
             font-size: 14px;
@@ -1988,17 +2174,73 @@ body.modal-open {
 
     .products-box {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+
+    /* Левая колонка (1, 3, 5… элементы) получают отступ справа */
+    .products-box > .decision-item:nth-child(odd) {
+        margin-right: 0px;
+    }
+
 
     .decision-item {
+        min-height: 160px;
         max-height: 500px;
         max-width: 500px;
-        padding: 30px 30px;
+        padding: 20px 20px;
+        margin-right: 0px;
+        margin-bottom: 0px;
     }
 
 
-}
+    .logo-footer {
+        width: 165px;
+        height: 33px;
+    }
 
+    .footer-politics {
+        font-size: 12px;
+    }
+
+    .footer-contacts {
+        font-size: 12px;
+    }
+
+    .footer-mail{
+        font-size: 12px;
+    }
+
+    .mail-icon {  
+        width: 20px;        /* Ширина иконки */
+        height: 20px;       /* Высота иконки */ 
+    }
+
+    .tg-icon {  
+        width: 20px;        /* Ширина иконки */
+        height: 20px;       /* Высота иконки */ 
+    }
+
+    .footer-contacts-pull {
+        gap: 10px;
+    }
+
+    .social-icons {
+        gap: 10px;
+    }
+
+    .demo-btn {
+        width: fit-content;
+        height: fit-content;
+        font-size: 14px;
+        padding: 8px 12px;
+        align-items: center;
+        
+    }
+
+    .form-text {
+        font-size: 12px;
+    }
+}
 
 
 @media (max-width: 430px) {
@@ -2012,34 +2254,24 @@ body.modal-open {
         padding-left: 15px;
     }
 
-    .bracket-up {
-        left: -10px;
-        top: 20px;
-        width: 30px; 
-        height: 30px; 
+
+    .finaction-name {
+        font-size: 50px;
     }
 
-    .bracket-down {
-        left: 260px;
-        bottom: 0;
-        top: 160px;
-        width: 30px; 
-        height: 30px;
+    .hero-title {
+        letter-spacing: 0.02em;    
+        font-size: 14px;
+    }
+
+    .hero-bullit1 {
+        max-width: 200px;
     }
 
 
     .hero-text {
         padding-top: 60px;
         /* padding-bottom: 30px; */
-    }
-
-    .hero-title {
-        font-size: 10px; /* Начальный размер шрифта*/
-         font-weight: var(--light);
-    }
-
-    .hero-title.loaded {
-        font-size: 40px; /* Конечный размер шрифта для маленьких экранов */
     }
 
     .hero-description {
@@ -2052,40 +2284,6 @@ body.modal-open {
     font-size: 10px;
     padding: 8px 8px;
     margin-top: 0;
-    }
-
-    .central-btn {
-        height: 25px;
-        width: 25px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-    }
-
-    .nav-line01 {
-        height: 25px;
-        width: 1px;
-    }
-
-    .nav-line02 {
-        height: 25px;
-        width: 1px;
-    }
-
-    .nav-line03 {
-        height: 25px;
-        width: 1px;
-    }
-
-    @media (hover: hover) {
-        .central-btn:hover #nav-line01 {
-            transform: translateY(4px);  /* Смещаем первую линию вниз на 8px */
-        }
-    }
-
-    @media (hover: hover) {
-        .central-btn:hover #nav-line03 {
-            transform: translateY(-4px); /* Смещаем третью линию вверх на 8px */
-        }
     }
 
     .trust-title {
@@ -2109,34 +2307,57 @@ body.modal-open {
         max-width: 300px;
     }
 
+    .section-title {
+        font-size: 28px;
+        /* padding-right: 8px; */
+    }
+
+    .dashboard-title {
+        font-size: 28px;
+    }
+
+    .section-name {
+        font-size: 12px;
+    }
+
+    .dashboard-name {
+        font-size: 12px;
+    }
+
+    .ready-name {     
+        font-size: 12px;
+        
+    }
+
+    .ready-title {
+        font-size: 28px;
+    }
+
+    .ready-text {
+        font-size: 12px;
+    }
+
+    .dashboard-text {
+        font-size: 12px;
+    }
+
+
+    .modal-content {
+        padding: 48px 30px;
+    }
+
+    .modal-contacts {
+        gap: 10px;
+    }
+
 }
 
 
 @media (max-width: 360px) {
 
-    .presentation-btn::after {
-        font-size: 8px;
-        height: 24px;
-        width: 24px;
-    } 
-
-    .connect-btn {
-        width: 24px; 
-        height: 24px;
-    }
-
-    .connect-btn::before {
-        width: 14px;      
-        height: 10px;
-    }
-
     .hero-text {
         padding-top: 60px;
         /* padding-bottom: 30px; */
-    }
-
-    .hero-title.loaded {
-        font-size: 36px; /* Конечный размер шрифта для маленьких экранов */
     }
 
     .hero-description {
@@ -2148,27 +2369,10 @@ body.modal-open {
         font-size: 40px;
     }
 
-    .bracket-down {
-        left: 240px;
-        bottom: 0;
-        top: 140px;
-        width: 30px; 
-        height: 30px;
-    }
-
     .products-btn {
         margin-top: 6px;
     }
 
-    .bracketup-black {
-        width: 30px;  
-        height: 30px;
-    }
-
-    .bracketdown-black {
-        width: 30px;  
-        height: 30px;
-    }
 
 }
 

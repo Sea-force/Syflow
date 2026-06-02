@@ -298,17 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // Анимация печати текста "finaction" в стиле терминала
 (function() {
     const titleElement = document.getElementById('terminal-title');
@@ -416,20 +405,82 @@ function animateBullits() {
     }, 600);
 }
 
-// АНИМАЦЯИ ПЛАВНОГО ПОЯВЛЕНИЯ ТЕКСТА "УБИРАЕМ РУТИНУ.."
+
+
+// АНИМАЦЯИ ПЛАВНОГО ПОЯВЛЕНИЯ ТЕКСТА "УБИРАЕМ РУТИНУ.." и КАРТОЧЕК НИЖЕ
 document.addEventListener('DOMContentLoaded', () => {
   const sectionTitle = document.querySelector('.section-title');
-  
-  // Настройки наблюдателя: элемент считается видимым, когда 20% его площади попало в экран
+  const decisionItems = document.querySelectorAll('.decision-item');
+  const details = document.querySelectorAll('.details');
+  const dashboard = document.querySelectorAll('.dashboard');
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        sectionTitle.classList.add('revealed');
-        observer.unobserve(sectionTitle); // анимация только один раз
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 }); // можно менять 0.2 → 0.3 для более раннего/позднего срабатывания
-  
-  observer.observe(sectionTitle);
+  }, { threshold: 0.8 });
+
+  if (sectionTitle) observer.observe(sectionTitle);
+
+  // Правильно: перебираем все элементы .details
+  details.forEach(item => observer.observe(item));
+
+  decisionItems.forEach(item => observer.observe(item));
+
+  dashboard.forEach(item => observer.observe(item));
 });
 
+
+// ПЛАВНОЕ ПОЯВЛЕНИЕ СТРЕЛКИ НА ГЛАВНОМ ЭКРАНЕ
+document.addEventListener('DOMContentLoaded', () => {
+  const heroSection = document.querySelector('.hero-finaction'); // класс вашей секции
+  const arrow = document.querySelector('.arrow');
+  
+  if (!heroSection || !arrow) return;
+
+  let triggered = false; // чтобы анимация сработала только один раз
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Когда видимая часть секции становится <= 50% (т.е. проскроллено 50%)
+      if (!triggered && entry.intersectionRatio <= 0.8) {
+        arrow.classList.add('visible');
+        triggered = true;
+        // можно отключить наблюдение, если не нужно следить дальше
+        observer.unobserve(heroSection);
+      }
+    });
+  }, {
+    threshold: 0.8 // порог в 50%
+  });
+
+  observer.observe(heroSection);
+});
+
+//ЗАЧЕРКИВАНИЕ СЛОВА - РУТИНУ
+document.addEventListener('DOMContentLoaded', () => {
+    const strikeWord = document.querySelector('.strike-word');
+    const decisionItem = document.querySelector('.decision-item');
+    
+    if (!strikeWord || !decisionItem) return;
+
+    // Устанавливаем CSS-переменную начально
+    strikeWord.style.setProperty('--strike-percent', 0);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const ratio = entry.intersectionRatio; // от 0 до 1
+            let percent = Math.floor(ratio * 100);
+            // Ограничиваем от 0 до 100
+            percent = Math.min(100, Math.max(0, percent));
+            strikeWord.style.setProperty('--strike-percent', percent);
+        });
+    }, {
+        threshold: Array.from({ length: 101 }, (_, i) => i / 100) // пороги от 0 до 1 с шагом 0.01
+    });
+
+    observer.observe(decisionItem);
+});
