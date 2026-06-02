@@ -151,11 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 answer.classList.remove('active');
                 answer.style.height = '0px';
                 answer.style.marginBottom = '0px';
+                answer.style.paddingBottom = '0px'; // сбрасываем padding
                 button.classList.remove('active');
                 question.classList.remove('active');
             } else {
                 // Открываем
                 answer.classList.add('active');
+                answer.style.paddingBottom = '12px'; // добавляем padding при открытии
                 // Временно даём блоку занять натуральную высоту
                 answer.style.height = 'auto';
                 // Получаем полную высоту контента

@@ -1029,12 +1029,12 @@ h5 {
                 padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             
             /* Дополнительно для внутренних отступов */
-            box-sizing: border-box;
+            /* box-sizing: border-box; */
         }
 
         /* Когда аккордеон активен, показываем ответ */
         .answer.active {
-            padding-bottom: 20px;
+            padding-bottom: 12px;
             border-bottom: 2px solid white;
         }
 
@@ -1766,11 +1766,11 @@ h5 {
     }
 
     .answer {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .answer-item {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .faq-container {
@@ -2372,6 +2372,21 @@ h5 {
         gap: 10px;
     }
 
+
+    /*FAQ */
+    .accordion:has(.answer.active) .accordion-header {
+        background-color: var(--grey-light);
+        color: var(--dark);
+    }
+
+    .accordion:has(.question.active) .question {
+        color: var(--dark);
+        padding-left: 4px;
+    }
+
+        .accordion:has(.question.active) .accordion-btn {
+        color: var(--dark);
+    }
 
 }
 
