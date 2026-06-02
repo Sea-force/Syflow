@@ -99,8 +99,8 @@ h5 {
 
 
         .logo {
-            display: block;
-            flex-grow: 1;
+            display: inline-block;
+            /* flex-grow: 1; */
             margin: 0;
             width: 124px;
             height: 24px;
@@ -166,6 +166,10 @@ h5 {
                     transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
                 }
             }
+
+.buttons {
+    display: flex;
+}
 
         .presentation-btn {
             display: flex;

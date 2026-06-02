@@ -102,11 +102,10 @@ h5 {
         padding-top: 60px; /* замените на реальную высоту вашего header */
     }
 
-        .logo {
-            
-            display: block;
-            flex-grow: 1;
-            margin: 0 auto;
+        .logo {           
+            display: inline-block;
+            /* flex-grow: 1; */
+            margin: 0;
             width: 124px;
             height: 24px;
             background-image: url(../images/logo.svg);
@@ -114,6 +113,7 @@ h5 {
             background-size: contain;
             
         }
+
 
         .central-btn {
             position: absolute;
@@ -170,6 +170,10 @@ h5 {
                     transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
                 }
             }
+
+        .buttons {
+            display: flex;
+        }
 
         .presentation-btn {
             display: flex;
