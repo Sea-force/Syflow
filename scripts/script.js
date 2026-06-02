@@ -324,3 +324,20 @@ document.addEventListener('DOMContentLoaded', () => {
         trustBlocks.forEach(block => observer.observe(block));
     }
 });
+
+//ПЛАВНОЕ ПОЯВЛЕНИЕ - PRODUCTS ITEM
+document.addEventListener('DOMContentLoaded', () => {
+    const productsItems = document.querySelectorAll('.products-item');
+    if (!productsItems.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('products-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.9 });
+
+    productsItems.forEach(item => observer.observe(item));
+});

@@ -641,9 +641,6 @@ h5 {
 }
 
 
-
-
-
 /* НАШИ ПРОДУКТЫ */
 
 .products-box {
@@ -2014,11 +2011,12 @@ body.modal-open {
 
     .checkbox-label {
         font-size: 12px;
+    }
+
+    .strike-word::after {
+        height: 10px;
+    }
 }
-
-
-}
-
 
 @media (max-width: 500px) {
 

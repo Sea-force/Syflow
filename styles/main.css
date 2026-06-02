@@ -644,6 +644,17 @@ h5 {
     border: 1px solid var(--grey);
     padding: 30px 30px;
     z-index: 1;
+
+    /* Начальное состояние: скрыт и слегка смещён вниз */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Класс, который добавится при видимости 90% */
+.products-item.products-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Уголки — общие стили */
