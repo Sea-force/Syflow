@@ -426,7 +426,7 @@ h5 {
     opacity: 0;
     
     /* Плавная анимация */
-    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 0.3s ease;
+    transition: transform 1.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 1.4s ease;
 }
 
 /* Конечное состояние, когда линия появилась */
@@ -1019,7 +1019,7 @@ h5 {
             margin: 0;
             padding: 0;
             font-weight: var(--light);
-            font-size: 14px;
+            font-size: 16px;
             color: white;
             border-bottom: none;
             line-height: 130%;
@@ -1826,10 +1826,20 @@ h5 {
         font-size: 14px;
     }
 
+
+    .line {
+    transform: translate(-50%, -50%);   /* исходное положение, которое вас устраивает */
+        opacity: 1;
+    }
+
+
     .transition-text {
         font-size: 14px;
         max-width: 460px;
+        opacity: 1;
+        transform: translateY(0);
     }
+
 
     .trust-title {
         padding-left: 24px;
@@ -1939,6 +1949,8 @@ h5 {
         font-size: 24px;
     }
 
+
+
 }
 
 
@@ -2024,6 +2036,7 @@ h5 {
     .faq-title {
         grid-column: auto;           /* сбрасываем привязку к первой колонке */
         font-size: 48px;             /* уменьшаем размер шрифта для мобильных */
+        padding-bottom: 20px;
     }
 
     .accordion-list {

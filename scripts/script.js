@@ -277,54 +277,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //АНИМАЦИЯ ПЛАВНОГО ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
 document.addEventListener('DOMContentLoaded', () => {
+    const isMobile = window.innerWidth < 730;
+
     const line = document.querySelector('.line');
     const transitionText = document.querySelector('.transition-text');
-    if (!line || !transitionText) return;
 
-    let animationStarted = false; // флаг, чтобы анимация запустилась только один раз
+    if (isMobile) {
+        // На маленьких экранах — сразу показываем элементы без анимации
+        if (line) line.classList.add('line--visible');
+        if (transitionText) transitionText.classList.add('transition-text--visible');
+        return; // Дальнейший код не нужен
+    }
 
-    const startAnimation = () => {
-        if (animationStarted) return;
-        animationStarted = true;
-
-        // Запускаем появление линии
-        line.classList.add('line--visible');
-
-        // Ждём окончания transform у линии (длительность задана в CSS)
-        const onTransformEnd = (e) => {
-            if (e.target === line && e.propertyName === 'transform') {
-                line.removeEventListener('transitionend', onTransformEnd);
-                // Запускаем появление текста
-                transitionText.classList.add('transition-text--visible');
-            }
-        };
-        line.addEventListener('transitionend', onTransformEnd);
-    };
-
-    // Проверка ширины экрана
-    const isMobileNarrow = () => window.innerWidth < 430;
-
-    if (isMobileNarrow()) {
-        // Для узких экранов (<430px): анимация при первом скролле вниз
-        let scrollHandler = () => {
-            // Скролл вниз (scrollY > 0)
-            if (window.scrollY > 0) {
-                startAnimation();
-                window.removeEventListener('scroll', scrollHandler);
-            }
-        };
-        window.addEventListener('scroll', scrollHandler);
-    } else {
-        // Для широких экранов: анимация при появлении в области видимости
+    // Для экранов >=730px — оригинальная анимация
+    if (line) {
         const observerLine = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    startAnimation();
+                    line.classList.add('line--visible');
                     observerLine.unobserve(line);
                 }
             });
         }, { threshold: 1.0 });
         observerLine.observe(line);
+    }
+
+    if (transitionText) {
+        const observerText = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    transitionText.classList.add('transition-text--visible');
+                    observerText.unobserve(transitionText);
+                }
+            });
+        }, { threshold: 0.8 });
+        observerText.observe(transitionText);
     }
 });
 
