@@ -2018,7 +2018,7 @@ body.modal-open {
     }
 
     .strike-word::after {
-        height: 10px;
+        height: 8px;
     }
 }
 

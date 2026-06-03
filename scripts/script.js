@@ -277,34 +277,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //АНИМАЦИЯ ПЛАВНОГО ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
 document.addEventListener('DOMContentLoaded', () => {
-    // Для линии (если ещё не добавили)
     const line = document.querySelector('.line');
-    if (line) {
+    const transitionText = document.querySelector('.transition-text');
+    if (!line || !transitionText) return;
+
+    let animationStarted = false; // флаг, чтобы анимация запустилась только один раз
+
+    const startAnimation = () => {
+        if (animationStarted) return;
+        animationStarted = true;
+
+        // Запускаем появление линии
+        line.classList.add('line--visible');
+
+        // Ждём окончания transform у линии (длительность задана в CSS)
+        const onTransformEnd = (e) => {
+            if (e.target === line && e.propertyName === 'transform') {
+                line.removeEventListener('transitionend', onTransformEnd);
+                // Запускаем появление текста
+                transitionText.classList.add('transition-text--visible');
+            }
+        };
+        line.addEventListener('transitionend', onTransformEnd);
+    };
+
+    // Проверка ширины экрана
+    const isMobileNarrow = () => window.innerWidth < 430;
+
+    if (isMobileNarrow()) {
+        // Для узких экранов (<430px): анимация при первом скролле вниз
+        let scrollHandler = () => {
+            // Скролл вниз (scrollY > 0)
+            if (window.scrollY > 0) {
+                startAnimation();
+                window.removeEventListener('scroll', scrollHandler);
+            }
+        };
+        window.addEventListener('scroll', scrollHandler);
+    } else {
+        // Для широких экранов: анимация при появлении в области видимости
         const observerLine = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    line.classList.add('line--visible');
+                    startAnimation();
                     observerLine.unobserve(line);
                 }
             });
         }, { threshold: 1.0 });
         observerLine.observe(line);
     }
-
-    // Для текста .transition-text
-    const transitionText = document.querySelector('.transition-text');
-    if (transitionText) {
-        const observerText = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    transitionText.classList.add('transition-text--visible');
-                    observerText.unobserve(transitionText);
-                }
-            });
-        }, { threshold: 0.9 });
-        observerText.observe(transitionText);
-    }
 });
+
 
 //ПЛАВНОЕ ПОЯВЛЕНИЕ - ПОЧЕМУ НАМ ДОВЕРЯЮТ
 document.addEventListener('DOMContentLoaded', () => {
