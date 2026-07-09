@@ -353,3 +353,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     productsItems.forEach(item => observer.observe(item));
 });
+
+//ВОЗВРАЩАЕМ HEADER ПРИ СКРОЛЛЕ ВВЕРХ
+(function() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let lastScrollTop = 0;
+    let headerHeight = header.offsetHeight; // высота header
+
+    // Функция для применения фиксации
+    function fixHeader() {
+        if (!header.classList.contains('header-fixed')) {
+            header.classList.add('header-fixed');
+            document.body.classList.add('header-fixed-padding');
+        }
+    }
+
+    // Функция для снятия фиксации
+    function unfixHeader() {
+        if (header.classList.contains('header-fixed')) {
+            header.classList.remove('header-fixed');
+            document.body.classList.remove('header-fixed-padding');
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Определяем направление: вверх (scrollTop < lastScrollTop) и не в самом верху
+        if (scrollTop < lastScrollTop && scrollTop > 0) {
+            // Скроллим ВВЕРХ и мы не в самом верху – фиксируем header
+            fixHeader();
+        } 
+        else if (scrollTop > lastScrollTop && header.classList.contains('header-fixed')) {
+            // Скроллим ВНИЗ – снимаем фиксацию (header снова становится статическим)
+            unfixHeader();
+        }
+
+        // Если дошли до самого верха – снимаем фиксацию, чтобы header встал на своё место
+        if (scrollTop === 0) {
+            unfixHeader();
+        }
+
+        lastScrollTop = scrollTop;
+    });
+
+    // Если страница уже прокручена вниз (например, перезагрузка), не фиксируем сразу
+    // Но можно по желанию: если при загрузке страница прокручена, а пользователь скроллит вверх – сработает.
+})();

@@ -407,7 +407,7 @@ function animateBullits() {
 
 
 
-// АНИМАЦЯИ ПЛАВНОГО ПОЯВЛЕНИЯ ТЕКСТА "УБИРАЕМ РУТИНУ.." и КАРТОЧЕК НИЖЕ
+// АНИМАЦИЯ ПЛАВНОГО ПОЯВЛЕНИЯ ТЕКСТА "УБИРАЕМ РУТИНУ.." и КАРТОЧЕК НИЖЕ
 document.addEventListener('DOMContentLoaded', () => {
   const sectionTitle = document.querySelector('.section-title');
   const decisionItems = document.querySelectorAll('.decision-item');

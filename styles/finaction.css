@@ -343,6 +343,24 @@ h5 {
             padding-top: 40px;
         }
 
+        .finaction-name2 {
+            display: block;
+            /* box-sizing: border-box; */
+            /* justify-content: center;   центрируем содержимое (обёртку с анимацией) */
+            /*  width: 100%;               блок занимает всю ширину родителя */
+            /* text-align: center;        */
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--grey-light);
+            font-weight: var(--black);
+            font-size: 120px;
+            margin: 0 auto;
+            padding: 0;
+            /* margin-top: 30px; */
+            padding-top: 40px;
+        }
+
+
         .left-align {
              display: block;
              text-align: left;     
@@ -389,6 +407,20 @@ h5 {
         }
 
         .hero-bullit1 {
+            position: relative;
+            display: flex;
+            /* padding: 20px 30px; */
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            max-width: 400px;
+            opacity: 0;                  /* весь блок прозрачен */
+            pointer-events: none;       /* чтобы не кликалось до появления */
+            transition: opacity 0.2s;   /* для плавного появления блока (необязательно) */
+        }
+
+        .hero-bullit3 {
             position: relative;
             display: flex;
             /* padding: 20px 30px; */
@@ -474,9 +506,31 @@ h5 {
             transition: opacity 0.2s;   /* для плавного появления блока (необязательно) */
         }
 
+        .hero-bullit4 {
+            position: relative;
+            display: flex;
+            text-align: left;
+            margin-left: 600px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            max-width: 280px;
+
+            opacity: 0;                  /* весь блок прозрачен */
+            pointer-events: none;       /* чтобы не кликалось до появления */
+            transition: opacity 0.2s;   /* для плавного появления блока (необязательно) */
+        }
+
         /* Состояние после запуска анимации — блок становится видимым */
         .hero-bullit1.animate,
         .hero-bullit2.animate {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-bullit3.animate,
+        .hero-bullit4.animate {
             opacity: 1;
             pointer-events: auto;
         }
@@ -488,20 +542,52 @@ h5 {
     left: -10px;
     transition: top 0.4s ease-out, left 0.4s ease-out;
 }
+
+.hero-bullit3 .corner2-tl,
+.hero-bullit4 .corner2-tl {
+    top: -10px;
+    left: -10px;
+    transition: top 0.4s ease-out, left 0.4s ease-out;
+}
+
+
 .hero-bullit1 .corner2-tr,
 .hero-bullit2 .corner2-tr {
     top: -10px;
     right: -10px;
     transition: top 0.4s ease-out, right 0.4s ease-out;
 }
+
+.hero-bullit3 .corner2-tr,
+.hero-bullit4 .corner2-tr {
+    top: -10px;
+    right: -10px;
+    transition: top 0.4s ease-out, right 0.4s ease-out;
+}
+
 .hero-bullit1 .corner2-bl,
 .hero-bullit2 .corner2-bl {
     bottom: -10px;
     left: -10px;
     transition: bottom 0.4s ease-out, left 0.4s ease-out;
 }
+
+.hero-bullit3 .corner2-bl,
+.hero-bullit4 .corner2-bl {
+    bottom: -10px;
+    left: -10px;
+    transition: bottom 0.4s ease-out, left 0.4s ease-out;
+}
+
 .hero-bullit1 .corner2-br,
 .hero-bullit2 .corner2-br {
+    bottom: -10px;
+    right: -10px;
+    transition: bottom 0.4s ease-out, right 0.4s ease-out;
+}
+
+.hero-bullit3 .corner2-br,
+.hero-bullit4 .corner2-br {
     bottom: -10px;
     right: -10px;
     transition: bottom 0.4s ease-out, right 0.4s ease-out;
@@ -513,18 +599,47 @@ h5 {
     top: 0px;
     left: 0px;
 }
+
+.hero-bullit3.animate .corner2-tl,
+.hero-bullit4.animate .corner2-tl {
+    top: 0px;
+    left: 0px;
+}
+
+
 .hero-bullit1.animate .corner2-tr,
 .hero-bullit2.animate .corner2-tr {
     top: 0px;
     right: 0px;
 }
+
+.hero-bullit3.animate .corner2-tr,
+.hero-bullit4.animate .corner2-tr {
+    top: 0px;
+    right: 0px;
+}
+
+
 .hero-bullit1.animate .corner2-bl,
 .hero-bullit2.animate .corner2-bl {
     bottom: 0px;
     left: 0px;
 }
+
+.hero-bullit3.animate .corner2-bl,
+.hero-bullit4.animate .corner2-bl {
+    bottom: 0px;
+    left: 0px;
+}
+
 .hero-bullit1.animate .corner2-br,
 .hero-bullit2.animate .corner2-br {
+    bottom: 0px;
+    right: 0px;
+}
+
+.hero-bullit3.animate .corner2-br,
+.hero-bullit4.animate .corner2-br {
     bottom: 0px;
     right: 0px;
 }
@@ -535,8 +650,20 @@ h5 {
     opacity: 0;
     transition: opacity 1s ease;
 }
+
+.hero-bullit3 .hero-description,
+.hero-bullit4 .hero-description {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
 .hero-bullit1.animate .hero-description,
 .hero-bullit2.animate .hero-description {
+    opacity: 1;
+}
+
+.hero-bullit3.animate .hero-description,
+.hero-bullit4.animate .hero-description {
     opacity: 1;
 }
 
@@ -1029,6 +1156,11 @@ h5 {
         max-width: 700px;
         color: var(--background);
     }
+
+    .ready-text2 {
+        color: var(--background);
+    }
+    
 
     .demo-btn {
         height: 40px;
@@ -1639,6 +1771,10 @@ body.modal-open {
         font-size: 120px;
     }
 
+    .finaction-name2 {
+        font-size: 100px;
+    }
+
     .hero-title {
         letter-spacing: 0.04em;
         text-transform: uppercase;       
@@ -1646,6 +1782,10 @@ body.modal-open {
     }
 
     .hero-bullit2 {
+        margin-top: 40px;
+    }
+
+    .hero-bullit4 {
         margin-top: 40px;
     }
 
@@ -1719,12 +1859,28 @@ body.modal-open {
         box-sizing: content-box; 
     }
 
+    .finaction-name2 {
+        margin-left: 24px;
+        padding-left: 60px;
+    }
+
     .container {
         padding-left: 24px;
         padding-right: 24px;
     }
+
     
     .hero-bullit2 {
+        margin-top: 40px;
+        margin-left: 480px;
+    }
+
+    .hero-bullit3 {
+        margin-top: 40px;
+        margin-left: 80px;
+    }
+
+    .hero-bullit4 {
         margin-top: 40px;
         margin-left: 480px;
     }
@@ -1736,6 +1892,15 @@ body.modal-open {
 }
 
 
+/* MEDIA 880px*/
+@media (max-width: 880px) {
+
+    .finaction-name2 {
+        padding-left: 120px;
+    }
+}
+
+
 /* MEDIA 800px*/
 @media (max-width: 800px) {
 
@@ -1743,11 +1908,25 @@ body.modal-open {
         font-size: 14px;
     }
 
+    .finaction-name2 {
+        padding-left: 140px;
+    }
+
+
     .hero-bullit1 {
         max-width: 320px;
     }
 
     .hero-bullit2 {
+        max-width: 240px;
+        margin-left: 60%;
+    }
+
+    .hero-bullit3 {
+        max-width: 320px;
+    }
+
+    .hero-bullit4 {
         max-width: 240px;
         margin-left: 60%;
     }
@@ -1778,6 +1957,10 @@ body.modal-open {
         font-size: 100px;
     }
 
+    .finaction-name2 {
+        font-size: 80px;
+    }
+
     .hero-title {
         letter-spacing: 0.04em;
         text-transform: uppercase;       
@@ -1796,6 +1979,16 @@ body.modal-open {
     }
 
     .hero-bullit2 {
+        margin-top: 20px;
+        margin-left: 50%;
+    }
+
+    .hero-bullit3 {
+        max-width: 260px;
+        margin-left: 120px;
+    }
+
+    .hero-bullit4 {
         margin-top: 20px;
         margin-left: 50%;
     }
@@ -1849,12 +2042,25 @@ body.modal-open {
         font-size: 80px;
     }
 
+    .finaction-name2 {
+        font-size: 60px;
+        padding-left: 40px;
+    }
+
     .hero-title {     
         font-size: 20px;
     }
 
 
     .hero-bullit2 {
+        margin-top: 40px;       
+    }
+
+    .hero-bullit3 {
+        margin-left: 40px;       
+    }
+
+    .hero-bullit4 {
         margin-top: 40px;       
     }
 
@@ -1976,6 +2182,11 @@ body.modal-open {
         padding-bottom: 16px;
 
     }
+
+    .hero-bullit3 {
+        margin-left: 60px;       
+    }
+
     .big-number {
         font-size: 60px;
     }
@@ -2068,6 +2279,10 @@ body.modal-open {
 
     .finaction-name {
         font-size: 60px;
+    }
+
+    .finaction-name2 {
+        font-size: 50px;
     }
 
     .hero-title {     
@@ -2261,12 +2476,20 @@ body.modal-open {
         font-size: 50px;
     }
 
+    .finaction-name2 {
+        font-size: 40px;
+    }
+
     .hero-title {
         letter-spacing: 0.02em;    
         font-size: 14px;
     }
 
     .hero-bullit1 {
+        max-width: 200px;
+    }
+
+    .hero-bullit3 {
         max-width: 200px;
     }
 
@@ -2339,6 +2562,10 @@ body.modal-open {
         font-size: 12px;
     }
 
+    .ready-text2 {
+        font-size: 12px;
+    }
+
     .dashboard-text {
         font-size: 12px;
     }
@@ -2367,6 +2594,14 @@ body.modal-open {
         max-width: 220px;
     }
 
+    .finaction-name2 {
+        font-size: 36px;
+    }
+
+    .hero-title {
+        font-size: 12px;
+    }
+
     .trust-title {    
         font-size: 40px;
     }
@@ -2375,6 +2610,18 @@ body.modal-open {
         margin-top: 6px;
     }
 
+    .section-title {
+        font-size: 20px;
+        
+    }
+
+    .details-info {
+        font-size: 10px;
+    }
+
+    .highlight {
+        padding: 2px 4px;
+    }
 
 }
 
