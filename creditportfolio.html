@@ -115,7 +115,7 @@
                         <p class="number">&nbsp;&nbsp;02 <span class="number-add">//</span>&nbsp;&nbsp;</p>    
                         <h3 class="products-name">Автосрезы</h3>
 
-                        <p class="decision-description">Фомирование срезов кредитного портфеля по банкам, заемщикам, видам кредита и валютам - в один клик</p>
+                        <p class="decision-description">Формирование срезов кредитного портфеля по банкам, заемщикам, видам кредита и валютам - в один клик</p>
                             
                     </div>
 
@@ -241,7 +241,7 @@
                         <p class="nav-section">Наши продукты</p>
                         <a href="finaction.html" class="nav-link">finAction</a>
                         <a href="creditportfolio.html" class="nav-link">кредитный портфель</a>
-                        <a href="#" class="nav-link">прочие услуги</a>
+                        <p class="nav-link" onclick="goToOtherServices(event)">прочие услуги</p>
                     </div>
 
                     <div class="our-products">
@@ -277,7 +277,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" name="name" placeholder="КОМПАНИЯ *" required>
+                <input type="text" name="company" placeholder="КОМПАНИЯ *" required>
             </div>
 
             <div class="form-group">
@@ -295,13 +295,13 @@
             <div class="form-group checkbox-group">
                 <label class="checkbox-label">
                     <input type="checkbox" name="privacy_policy" required>
-                    <span>Я СОГЛАСЕН С <a href="#" class="politics-item">ПОЛИТИКОЙ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
+                    <span>Я СОГЛАСЕН С <a href="policy.html" class="politics-item">ПОЛИТИКОЙ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
                 </label>
             </div>
             <div class="form-group checkbox-group">
                 <label class="checkbox-label">
                     <input type="checkbox" name="personal_data_consent" required>
-                    <span>ДАЮ СОГЛАСИЕ НА ОБРАБОТКУ МОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ</span>
+                    <span>ДАЮ <a href="soglasie.html" class="politics-item">СОГЛАСИЕ НА ОБРАБОТКУ МОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
                 </label>
             </div>
 
@@ -314,6 +314,7 @@
 
 <script src="./scripts/script-finaction.js"></script>
 <script src="./scripts/script-portfolio.js"></script>
+<script src="./scripts/contact-form.js"></script>
 
 </body>
 </html>

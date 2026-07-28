@@ -484,3 +484,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(decisionItem);
 });
+
+// ПЕРЕХОД К КАРТОЧКЕ "ПРОЧИЕ УСЛУГИ"
+function goToOtherServices(event) {
+    if (event) event.preventDefault();
+
+    // если уже на главной — просто скроллим к карточке
+    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+        scrollToOtherServices();
+    } else {
+        // иначе переходим на главную с меткой в URL
+        window.location.href = 'index.html#other-services';
+    }
+}
+
+function scrollToOtherServices() {
+
+    closeModal()
+    
+    const target = document.getElementById('other-services');
+    if (!target) return;
+
+    // учитываем высоту фиксированного хедера, чтобы карточку не перекрыло
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 0;
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
+// если пришли на index.html по ссылке с #other-services — доскроллить после загрузки
+window.addEventListener('load', () => {
+    if (window.location.hash === '#other-services') {
+        setTimeout(scrollToOtherServices, 100);
+    }
+});

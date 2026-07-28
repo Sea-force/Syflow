@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>syflow.ru</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles/normalize.min.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/policy.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header">
+                <a href="index.html" class="logo"></a>
+                <button id="central-btn"class="central-btn" onclick="openModal()">
+                    <div id="nav-line01" class="nav-line01"></div>
+                    <div id="nav-line02" class="nav-line02"></div>
+                    <div id="nav-line03" class="nav-line03"></div>
+                </button>
+                <button class="presentation-btn2">Презентация</button>
+                <button class="connect-btn">Связаться</button>
+            </div>    
+        </div>
+    </header>
+
+    <section class="politics">
+        <div class="container">
+
+            <div class="title-section">
+                <a href="finaction.html"class="back-to-main">Вернуться на главную</a>
+                <p class="section-title">СОГЛАСИЕ НА ОБРАБОТКУ  <br>ПЕРСОНАЛЬНЫХ ДАННЫХ</p>
+            </div>
+
+            <div class="line2"></div>
+
+            <div class="subtitle-section">
+                <p class="paragraph">Я, заполняя форму обратной связи на веб-сайте https://syflow.ru (далее — Веб-сайт), в соответствии со статьей 9 Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» свободно, своей волей и в своем интересе даю согласие самозанятому Семенову Евгению Александровичу, ИНН [указать] (далее — Оператор), на обработку моих персональных данных на следующих условиях:</p>
+
+                <p class="paragraph">1. Перечень персональных данных, на обработку которых дается согласие: имя; наименование организации (при наличии); адрес электронной почты; номер телефона; текст обращения (сообщения).</p>
+
+                <p class="paragraph">2. Цель обработки: связь с Пользователем по вопросам, указанным в обращении; направление по инициативе Пользователя информации об ИТ-продуктах Оператора, ознакомительных материалов и коммерческих предложений.</p>
+
+                <p class="paragraph">3. Перечень действий с персональными данными, на совершение которых дается согласие: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, предоставление, передача (в случаях, предусмотренных законодательством РФ), обезличивание, блокирование, удаление, уничтожение — как с использованием средств автоматизации, так и без их использования.</p>
+
+                <p class="paragraph">4. Согласие действует с момента его предоставления до достижения целей обработки персональных данных либо до момента его отзыва Пользователем, если иной срок хранения персональных данных не предусмотрен законодательством Российской Федерации.</p>
+
+                <p class="paragraph">5.	Я подтверждаю, что ознакомлен(а) с Политикой обработки персональных данных Оператора, размещенной в сети Интернет по адресу https://syflow.ru/policy.</p>
+
+                <p class="paragraph">6.	Согласие может быть отозвано мной в любой момент путем направления уведомления на адрес электронной почты Оператора: syflow@mail.ru.</p>
+
+                <p class="paragraph">7.	Настоящее согласие предоставляется в электронной форме посредством проставления отметки («чекбокса») в форме обратной связи на Веб-сайте и имеет юридическую силу в соответствии с законодательством Российской Федерации.</p>
+
+            </div>
+        </div>
+    </section> 
+
+    <!-- Модальное окно -->
+    <div class="modal-overlay2" id="modalOverlay2">
+        <div class="modal-container2">
+
+            <!-- Четыре уголка -->
+            <i class="corner corner-tl"></i>
+            <i class="corner corner-tr"></i>
+            <i class="corner corner-bl"></i>
+            <i class="corner corner-br"></i>
+
+            <div class="modal-content">
+                <!-- Левая панель -->
+                <div class="modal-left">
+                    <div class="modal-logo"></div>
+                    <div class="modal-contacts">
+                        <div class="contact-info">
+                            <p class="contact-header">Связаться</p>
+                            <a href="mailto:hello@syflow.ru" class="contact-email">syflow@mail.ru</a>
+                        </div>
+                        <div class="social-icons">
+                            <a href="mailto:syflow@mail.ru" class="social-icon mail-icon" aria-label="Email"></a>
+                            <a href="https://t.me/syflow" class="social-icon tg-icon" aria-label="Telegram" target="_blank" rel="noopener noreferrer"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- модальное окно -->
+                <div class="modal-right">
+                    <button class="close-button" id="closeModalBtn">✕</button>
+                    <nav class="modal-nav">
+
+                        <div class="our-products">
+                            <p class="nav-section">Наши продукты</p>
+                            <a href="finaction.html" class="nav-link">finAction</a>
+                            <a href="creditportfolio.html" class="nav-link">кредитный портфель</a>
+                            <p class="nav-link" onclick="goToOtherServices(event)">прочие услуги</p>
+
+                        </div>
+
+                        <div class="our-products">
+                            <p class="nav-section">Скоро</p>
+                            <p class="soon-link">ЭкспрессМодель</p>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Модальное окно СВЯЗАТЬСЯ / ДЕМО -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <!-- Четыре уголка -->
+            <i class="corner corner-tl"></i>
+            <i class="corner corner-tr"></i>
+            <i class="corner corner-bl"></i>
+            <i class="corner corner-br"></i>
+
+            <button class="modal-close" id="modalCloseBtn">✕</button>
+
+            <form id="contactForm" class="modal-form">
+
+                <p class="form-text">При возникновении вопросов, пожалуйста, оставьте свои контактные данные и сообщение.  Вернемся к вам с обратной связью в ближайшее время.</p>
+
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="ВАШЕ ИМЯ *" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="КОМПАНИЯ *" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="ПОЧТА *" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="ТЕЛЕФОН">
+                </div>
+                        
+                <div class="form-group">
+                    <textarea name="message" rows="4" placeholder="СООБЩЕНИЕ"></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="privacy_policy" required>
+                        <span>Я СОГЛАСЕН С <a href="policy.html" class="politics-item">ПОЛИТИКОЙ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
+                    </label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="personal_data_consent" required>
+                        <span>ДАЮ <a href="soglasie.html" class="politics-item">СОГЛАСИЕ НА ОБРАБОТКУ МОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">ОТПРАВИТЬ</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="./scripts/script-finaction.js"></script>
+    <script src="./scripts/contact-form.js"></script>
+
+
+</body>
+
+</html>

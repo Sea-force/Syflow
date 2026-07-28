@@ -1634,6 +1634,156 @@ h5 {
         overflow: hidden;
     }
 
+    /* Кастомное уведомление (замена alert) */
+    .alert-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001; /* выше основной модалки (у неё 10000) */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .alert-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .alert-container {
+        position: relative;
+        background: white;
+        width: 90%;
+        max-width: 380px;
+        padding: 45px 32px 36px;
+        box-sizing: border-box;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .alert-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: white;
+    }
+
+    .alert-icon.success {
+        background-color: #1e1e2a;
+    }
+
+    .alert-icon.error {
+        background-color: #b3475f;
+    }
+
+    .alert-message {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--grey-dark);
+        letter-spacing: -0.02em;
+        margin-bottom: 24px;
+    }
+
+    .alert-container .submit-btn {
+        margin-top: 0;
+    }
+
+
+    /* Баннер согласия на cookies */
+    .cookie-banner {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999; /* ниже модалок (у них 10000/10001) */
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+        transform: translateY(120%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .cookie-banner.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .cookie-banner-inner {
+        position: relative;
+        background: white;
+        width: 100%;
+        max-width: 720px;
+        padding: 28px 32px;
+        box-sizing: border-box;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .cookie-banner-text {
+        flex: 1 1 320px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--grey-dark);
+        letter-spacing: -0.02em;
+        margin: 0;
+    }
+
+    .cookie-banner-actions {
+        display: flex;
+        gap: 12px;
+        flex-shrink: 0;
+    }
+
+    .cookie-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: var(--regular);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        border: 1px solid #1e1e2a;
+        background: transparent;
+        color: #1e1e2a;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .cookie-btn-accept {
+        background-color: var(--dark);
+        color: white;
+        border-color: var(--dark);
+    }
+
+    .cookie-btn-accept:hover {
+        background-color: #5F7DC1;
+        border-color: #5F7DC1;
+    }
+
+    .cookie-btn-decline:hover {
+        background-color: #1e1e2a;
+        color: white;
+    }
+
+
 
 /* MEDIA 1080px*/
 @media (max-width: 1220px) {
@@ -2427,6 +2577,22 @@ h5 {
         .accordion:has(.question.active) .accordion-btn {
         color: var(--dark);
     }
+
+
+    .cookie-banner-text {
+        font-size: 12px; 
+    }
+
+    .cookie-btn-decline {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .cookie-btn-accept {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
 
 }
 

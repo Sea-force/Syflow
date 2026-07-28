@@ -145,7 +145,7 @@
                             <i class="corner3 corner3-bl"></i>
                             <i class="corner3 corner3-br"></i>
 
-                            <h3 class="products-name">прочие <br>услуги</h3>
+                            <h3 class="products-name" id="other-services"> прочие <br>услуги</h3>
                             <ul class="products-features">
 
                                 <li>автоматизированная аналитика на основе выборок / списков СПАРК</li>
@@ -343,7 +343,7 @@
                             <p class="nav-section">Наши продукты</p>
                             <a href="finaction.html" class="nav-link">finAction</a>
                             <a href="creditportfolio.html" class="nav-link">кредитный портфель</a>
-                            <a href="#" class="nav-link">прочие услуги</a>
+                            <p class="nav-link" onclick="goToOtherServices(event)">прочие услуги</p>
                         </div>
 
                         <div class="our-products">
@@ -378,7 +378,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="КОМПАНИЯ *" required>
+                    <input type="text" name="company" placeholder="КОМПАНИЯ *" required>
                 </div>
 
                 <div class="form-group">
@@ -396,13 +396,13 @@
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" name="privacy_policy" required>
-                        <span>Я СОГЛАСЕН С <a href="#" class="politics-item">ПОЛИТИКОЙ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
+                        <span>Я СОГЛАСЕН С <a href="policy.html" class="politics-item">ПОЛИТИКОЙ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
                     </label>
                 </div>
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" name="personal_data_consent" required>
-                        <span>ДАЮ СОГЛАСИЕ НА ОБРАБОТКУ МОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ</span>
+                        <span>ДАЮ <a href="soglasie.html" class="politics-item">СОГЛАСИЕ НА ОБРАБОТКУ МОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
                     </label>
                 </div>
 
@@ -412,7 +412,46 @@
     </div>
 
 
-<script src="./scripts/script.js"></script>
+    <!-- Кастомное уведомление (замена браузерного alert) -->
+    <div class="alert-overlay" id="alertOverlay">
+        <div class="alert-container">
+            <i class="corner corner-tl"></i>
+            <i class="corner corner-tr"></i>
+            <i class="corner corner-bl"></i>
+            <i class="corner corner-br"></i>
+
+            <!-- <button class="modal-close" id="alertCloseBtn">✕</button> -->
+
+            <div class="alert-icon" id="alertIcon"></div>
+            <p class="alert-message" id="alertMessage"></p>
+
+            <button class="submit-btn" id="alertOkBtn">ОК</button>
+        </div>
+    </div>
+
+    <!-- Баннер согласия на использование cookies -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-banner-inner">
+            <i class="corner corner-tl"></i>
+            <i class="corner corner-tr"></i>
+            <i class="corner corner-bl"></i>
+            <i class="corner corner-br"></i>
+
+            <p class="cookie-banner-text">
+                Мы используем файлы cookie для работы сайта и аналитики. Подробнее — в
+                <a href="policy.html" class="politics-item">Политике обработки персональных данных</a>.
+            </p>
+
+            <div class="cookie-banner-actions">
+                <button class="cookie-btn cookie-btn-decline" id="cookieDeclineBtn">ОТКЛОНИТЬ</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieAcceptBtn">ПРИНЯТЬ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/contact-form.js"></script>
+    <script src="./scripts/cookie-consent.js"></script>
 
 </body>
 </html>
