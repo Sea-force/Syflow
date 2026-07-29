@@ -1,5 +1,5 @@
 // Подставьте адрес, по которому будет доступен ваш FastAPI-бэкенд
-const CONTACT_API_URL = 'http://127.0.0.1:8000/api/contact';
+const CONTACT_API_URL = '/api/contact';
 
 // --- Кастомный alert (вместо браузерного alert()) ---
 const alertOverlay = document.getElementById('alertOverlay');

@@ -2,10 +2,13 @@ import os
 import smtplib
 import ssl
 from email.message import EmailMessage
+from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, EmailStr, Field
 
 load_dotenv()
@@ -25,6 +28,49 @@ ALLOWED_ORIGINS = [
 ]
 
 app = FastAPI(title="Contact form API")
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+app.mount("/styles", StaticFiles(directory=BASE_DIR / "styles"), name="styles")
+app.mount("/scripts", StaticFiles(directory=BASE_DIR / "scripts"), name="scripts")
+app.mount("/images", StaticFiles(directory=BASE_DIR / "images"), name="images")
+app.mount("/fonts", StaticFiles(directory=BASE_DIR / "fonts"), name="fonts")
+app.mount("/resources", StaticFiles(directory=BASE_DIR / "resources"), name="resources")
+
+@app.get("/", include_in_schema=False)
+async def index():
+    return FileResponse(BASE_DIR / "index.html")
+
+
+@app.get("/index.html", include_in_schema=False)
+async def index_html():
+    return FileResponse(BASE_DIR / "index.html")
+
+
+@app.get("/finaction.html", include_in_schema=False)
+async def finaction():
+    return FileResponse(BASE_DIR / "finaction.html")
+
+
+@app.get("/creditportfolio.html", include_in_schema=False)
+async def creditportfolio():
+    return FileResponse(BASE_DIR / "creditportfolio.html")
+
+
+@app.get("/policy.html", include_in_schema=False)
+async def policy():
+    return FileResponse(BASE_DIR / "policy.html")
+
+
+@app.get("/soglasie.html", include_in_schema=False)
+async def soglasie():
+    return FileResponse(BASE_DIR / "soglasie.html")
+
+
+@app.get("/favicon.svg", include_in_schema=False)
+async def favicon():
+    return FileResponse(BASE_DIR / "favicon.svg")
+
 
 app.add_middleware(
     CORSMiddleware,
