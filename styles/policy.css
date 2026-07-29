@@ -44,7 +44,7 @@ h3 {
     padding: 0;
 }
 
-/* HEADER */
+
 
 .container {
     width: 100%;
@@ -68,7 +68,7 @@ h3 {
 
     }
 
-    /* Класс, который делает header фиксированным при скролле вверх */
+    
     .header-fixed {
         position: fixed !important;
         background-color: var(--background);
@@ -77,7 +77,7 @@ h3 {
         border-bottom: 1px solid var(--dark);
         width: 100%;
         z-index: 1000;
-        /* Плавное появление (можно добавить анимацию) */
+        
         animation: slideDown 0.3s ease forwards;
     }
 
@@ -90,9 +90,9 @@ h3 {
         }
     }
 
-    /* Чтобы контент не прыгал, когда header становится фиксированным, добавляем padding-top на body */
+    
     body.header-fixed-padding {
-        padding-top: 60px; /* замените на реальную высоту вашего header */
+        padding-top: 60px; 
     }
 
         .logo {
@@ -121,7 +121,7 @@ h3 {
             padding-top: 16px;
             padding-bottom: 16px;
             background-color: transparent;
-            cursor: pointer; /* Добавим курсор */ 
+            cursor: pointer;  
             transform: translateX(-50%);
         }
 
@@ -131,7 +131,7 @@ h3 {
             width: 50px;
             height: 2px;
             border: none;
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transition: transform 0.3s ease, opacity 0.3s ease; 
             transform-origin: center center;
             }
 
@@ -148,19 +148,19 @@ h3 {
             width: 50px;
             height: 2px;
             border: none;
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transition: transform 0.3s ease, opacity 0.3s ease; 
             transform-origin: center center;
             }
 
             @media (hover: hover) {
                 .central-btn:hover #nav-line01 {
-                    transform: translateY(8px);  /* Смещаем первую линию вниз на 8px */
+                    transform: translateY(8px);  
                 }
             }
 
             @media (hover: hover) {
                 .central-btn:hover #nav-line03 {
-                    transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
+                    transform: translateY(-8px); 
                 }
             }
 
@@ -194,7 +194,7 @@ h3 {
 
 
 
-        /* Отключаем hover для мобильных устройств */
+        
         @media(hover: hover) {
             .presentation-btn2:hover {
                 background-color: var(--accent);
@@ -203,8 +203,8 @@ h3 {
 
 
         .connect-btn {
-            display: flex;          /* Добавляем flex */
-            justify-content: center; /* Центрируем текст по умолчанию */
+            display: flex;          
+            justify-content: center; 
             box-sizing: border-box;
             height: 40px;
             width: 169px;
@@ -228,11 +228,11 @@ h3 {
             }
         }
 
-/* ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ */
+
 
 .title-section {
     display: grid;
-    grid-template-columns: 50% 50%; /* первая колонка 50%, остальные по 25% */ 
+    grid-template-columns: 50% 50%;  
     grid-template-rows: auto;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -242,8 +242,8 @@ h3 {
 .back-to-main {
     grid-column: 1;
     display: inline-block;
-    justify-self: start;  /* сужаем по ширине */
-    align-self: end;     /* сужаем по высоте — убираем растяжение */
+    justify-self: start;  
+    align-self: end;     
     font-size: 16px;
     letter-spacing: 0.02em;
     font-weight: var(--regular);
@@ -252,7 +252,7 @@ h3 {
     margin: 0;   
 }
 
-/* применяем hover только для ПК (есть курсор) */
+
 @media(hover: hover) {
     .back-to-main:hover {
         color: var(--accent);
@@ -277,7 +277,7 @@ h3 {
 
 .subtitle-section {
     display: grid;
-    grid-template-columns: 50% 50%; /* первая колонка 50%, остальные по 25% */ 
+    grid-template-columns: 50% 50%;  
     grid-template-rows: auto;
     margin: 0 auto;
     margin-top: 20px; 
@@ -287,7 +287,7 @@ h3 {
 .subtitle {
     grid-column: 2;
     font-size: 18px;
-    /* letter-spacing: -0.06em; */
+    
     text-transform: uppercase;
     font-weight: var(--medium);
     color: var(--dark);
@@ -306,7 +306,7 @@ h3 {
     padding: 0;
 }
 
-/* ТАБЛИЦА (раздел 6 — цели обработки) */
+
 
 .policy-table {
     grid-column: 2;
@@ -363,7 +363,7 @@ h3 {
             margin: 0;
         }
 
-    /* МОДАЛЬНОЕ ОКНО */
+    
     .close-button {
         position: absolute;
         top: -16px;
@@ -390,7 +390,7 @@ h3 {
 
 
 
-/* MEDIA 1080px*/
+
 @media (max-width: 1080px) {
 
     .container {
@@ -404,7 +404,7 @@ h3 {
 }
 
 
-/* MEDIA TABLET 768px */
+
 @media (max-width: 768px) {
 
     .connect-btn {
@@ -443,7 +443,7 @@ h3 {
 }
 
 
-/* MEDIA TABLET 730px */
+
 @media (max-width: 730px) {
 
     .close-button {
@@ -454,7 +454,7 @@ h3 {
 }
 
 
-/* MEDIA TABLET 600px */
+
 @media (max-width: 600px) {
 
     .header {
@@ -470,7 +470,7 @@ h3 {
     }
 }
 
-/* MEDIA TABLET 500px */
+
 @media (max-width: 500px) {
 
     .header {
@@ -479,25 +479,25 @@ h3 {
     }
 
     .central-btn {
-        width: 25px;           /* Было 50px */
-        height: 25px;          /* Было 50px */
-        padding-top: 6px;      /* Было 16px */
-        padding-bottom: 6px;   /* Было 16px */
+        width: 25px;           
+        height: 25px;          
+        padding-top: 6px;      
+        padding-bottom: 6px;   
     }
 
     .nav-line01,
     .nav-line02,
     .nav-line03 {
-        width: 25px;           /* Было 50px */
+        width: 25px;           
     }
 
-    /* Корректируем смещение при наведении (пропорционально) */
+    
     .central-btn:hover #nav-line01 {
-        transform: translateY(4px);  /* Было 8px */
+        transform: translateY(4px);  
     }
 
     .central-btn:hover #nav-line03 {
-        transform: translateY(-4px); /* Было -8px */
+        transform: translateY(-4px); 
     }
 
     .logo {
@@ -531,7 +531,7 @@ h3 {
 
 
 
-/* MEDIA TABLET 430px */
+
 @media (max-width: 430px) {
 
     .container {

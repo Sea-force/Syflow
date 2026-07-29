@@ -1,20 +1,19 @@
-// АНИМАЦИЯ СКОБОК
 document.addEventListener("DOMContentLoaded", function() {
     const bracketUp = document.querySelector('.bracket-up');
     const bracketDown = document.querySelector('.bracket-down');
-    // Ждем небольшую паузу перед добавлением класса
+
     setTimeout(() => {
         bracketUp.classList.add('animate');
         bracketDown.classList.add('animate');
-    }, 100);  // 100 мс, чтобы анимация была заметной
+    }, 100);
 });
 
-// МЫ СОЗДАЕМ
+
 document.addEventListener('DOMContentLoaded', function() {
     const heroTitle = document.querySelector('.hero-title');
     const heroDescription = document.querySelector('.hero-description');
-    const highlight = document.querySelector('.highlight'); // Получаем элемент с классом highlight
-    // Задержка перед добавлением класса для заголовка (чтобы анимация сработала)
+    const highlight = document.querySelector('.highlight');
+
     const productsbtn = document.querySelector('.products-btn');
 
 
@@ -25,22 +24,21 @@ document.addEventListener('DOMContentLoaded', function() {
          heroDescription.classList.add('loaded');
 
             setTimeout(function() {
-                highlight.classList.add('loaded'); // Добавляем класс для анимации фона
+                highlight.classList.add('loaded');
 
                 setTimeout(function() {
-                    productsbtn.classList.add('loaded'); // Добавляем класс для анимации фона
+                    productsbtn.classList.add('loaded');
 
-                }, 1000); // Задержка 1 секунда 
+                }, 1000);
             
-            }, 1000); // Задержка 2 секунды (равна продолжительности анимации заголовка)
+            }, 1000);
 
-        }, 1000); // Задержка после анимации hero-title
+        }, 1000);
 
-  }, 500); // Начальная задержка 500ms
+  }, 500);
 });
 
-// Smooth Scroll to Our Products Section
-      
+
        const links = document.querySelectorAll(".products-btn");
 
        for (const link of links) {
@@ -56,9 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
        });
        }
 
-// НАШИ ПРОДУКТЫ (перенос секции)
 
-    // Находим элементы один раз для оптимизации
     const header = document.querySelector('.products-header');
     const title = header.querySelector('.products-title');
     const productsBox = document.querySelector('.products-box');
@@ -69,32 +65,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const width = window.innerWidth;
 
         if (width < 1080) {
-            // Перемещаем products-item2 внутрь products-header после products-title, если там его ещё нет
+
             if (productsItem2.parentNode !== header) {
                 header.insertBefore(productsItem2, title.nextSibling);
             }
         } else {
-            // Возвращаем products-item2 обратно в products-box, если там его нет
+
             if (productsItem2.parentNode !== productsBox) {
                 productsBox.appendChild(productsItem2);
             }
         }
     }
 
-// Запускаем при загрузке страницы
+
 moveProductItem2();
 
-// Добавляем обработчик изменения размера окна
 window.addEventListener('resize', moveProductItem2);
 
-
-// КНОПКА МЕНЮ СВЕРХУ
 
 function openModal() {
     const modal = document.getElementById('modalOverlay2');
     if (modal) {
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // запрещаем скролл страницы
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -102,16 +95,16 @@ function closeModal() {
     const modal = document.getElementById('modalOverlay2');
     if (modal) {
         modal.classList.remove('active');
-        document.body.style.overflow = ''; // возвращаем скролл
+        document.body.style.overflow = '';
     }
 }
 
-// Закрытие по крестику
+
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeModal);
     }
 
-// Закрытие по клику на фон (overlay)
+
 document.addEventListener('DOMContentLoaded', function() {
     const modalOverlay2 = document.getElementById('modalOverlay2');
     if (modalOverlay2) {
@@ -122,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Закрытие по Escape
+
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modalOverlay2 && modalOverlay2.classList.contains('active')) {
             closeModal();
@@ -132,8 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// FAQ - РАСКРЫТИЕ ВОПРОСОВ
-// FAQ - РАСКРЫТИЕ ВОПРОСОВ
 document.addEventListener('DOMContentLoaded', () => {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
@@ -147,32 +138,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const isActive = answer.classList.contains('active');
 
             if (isActive) {
-                // Закрываем
+
                 answer.classList.remove('active');
                 answer.style.height = '0px';
                 answer.style.marginBottom = '0px';
-                answer.style.paddingBottom = '0px'; // сбрасываем padding
+                answer.style.paddingBottom = '0px'; 
                 button.classList.remove('active');
                 question.classList.remove('active');
             } else {
-                // Открываем
+
                 answer.classList.add('active');
-                answer.style.paddingBottom = '12px'; // добавляем padding при открытии
-                // Временно даём блоку занять натуральную высоту
+                answer.style.paddingBottom = '12px'; 
+
                 answer.style.height = 'auto';
-                // Получаем полную высоту контента
+
                 const fullHeight = answer.scrollHeight;
-                // Сбрасываем высоту для анимации
+
                 answer.style.height = '0px';
-                // Принудительный перерасчёт
+
                 void answer.offsetHeight;
-                // Устанавливаем целевую высоту
+
                 answer.style.height = fullHeight + 'px';
 
                 button.classList.add('active');
                 question.classList.add('active');
 
-                // Отладка: проверяем, применился ли padding-bottom
+
                 console.log('margin-bottom после установки:', window.getComputedStyle(answer).paddingBottom);
                 console.log('fullHeight:', fullHeight);
             }
@@ -181,21 +172,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// МОДАЛЬНОЕ ОКНО ДЛЯ КНОПОК "СВЯЗАТЬСЯ" И ЗАПРОСИТЬ ДЕМО
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Элементы модального окна
+
     const modalOverlay = document.getElementById('modalOverlay');
     const modalCloseBtn = document.getElementById('modalCloseBtn');
     const form = document.getElementById('contactForm');
-    const formTextElement = document.querySelector('.form-text'); // элемент с текстом
+    const formTextElement = document.querySelector('.form-text');
 
-    // Тексты для разных кнопок
+
     const texts = {
         connect: 'При возникновении вопросов, пожалуйста, оставьте свои контактные данные и сообщение. Вернемся к вам с обратной связью в ближайшее время.',
         presentation: 'Для демонстрации продуктов, пожалуйста, оставьте свои контактные данные, и при необходимости напишите свои пожелания. Мы свяжемся с вами в ближайшее время для согласования удобного времени и формата.'
     };
 
-    // Функция открытия модального окна с нужным текстом
+
     function openModal(text) {
         if (formTextElement) {
             formTextElement.textContent = text;
@@ -204,15 +195,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('modal-open');
     }
 
-    // Функция закрытия модалки
+
     function closeModal() {
         modalOverlay.classList.remove('active');
         document.body.classList.remove('modal-open');
-        // При желании можно сбросить форму:
-        // form.reset();
+
+
     }
 
-    // Обработчики для кнопок .connect-btn
+
     const connectBtns = document.querySelectorAll('.connect-btn');
     connectBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -221,8 +212,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Обработчики для кнопок .presentation-btn
-    const presentationBtns = document.querySelectorAll('.presentation-btn777'); //СПЕЦИАЛЬНО ДОБАВИЛ 777, ЧТОБЫ НЕ РАБОТАЛО
+
+    const presentationBtns = document.querySelectorAll('.presentation-btn777');
     presentationBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -230,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Обработчики для кнопок .demo-btn
+
     const demoBtns = document.querySelectorAll('.demo-btn');
     demoBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -239,12 +230,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Закрытие по крестику
+
     if (modalCloseBtn) {
         modalCloseBtn.addEventListener('click', closeModal);
     }
 
-    // Закрытие по клику на оверлей
+
     if (modalOverlay) {
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) {
@@ -253,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Закрытие по ESC
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
             closeModal();
@@ -262,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-//АНИМАЦИЯ ПЛАВНОГО ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
+
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth < 730;
 
@@ -270,13 +261,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const transitionText = document.querySelector('.transition-text');
 
     if (isMobile) {
-        // На маленьких экранах — сразу показываем элементы без анимации
+
         if (line) line.classList.add('line--visible');
         if (transitionText) transitionText.classList.add('transition-text--visible');
-        return; // Дальнейший код не нужен
+        return;
     }
 
-    // Для экранов >=730px — оригинальная анимация
+
     if (line) {
         const observerLine = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -303,9 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-//ПЛАВНОЕ ПОЯВЛЕНИЕ - ПОЧЕМУ НАМ ДОВЕРЯЮТ
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Выбираем все четыре блока
+
     const trustBlocks = document.querySelectorAll(
         '.trust-textblock, .trust-textblock2, .trust-textblock3, .trust-textblock4'
     );
@@ -315,16 +306,16 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('trust-visible');
-                    observer.unobserve(entry.target); // анимация один раз
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.9 }); // 90% видимости
+        }, { threshold: 0.9 });
         
         trustBlocks.forEach(block => observer.observe(block));
     }
 });
 
-//ПЛАВНОЕ ПОЯВЛЕНИЕ - PRODUCTS ITEM
+
 document.addEventListener('DOMContentLoaded', () => {
     const productsItems = document.querySelectorAll('.products-item');
     if (!productsItems.length) return;
@@ -341,15 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
     productsItems.forEach(item => observer.observe(item));
 });
 
-//ВОЗВРАЩАЕМ HEADER ПРИ СКРОЛЛЕ ВВЕРХ
+
 (function() {
     const header = document.querySelector('header');
     if (!header) return;
 
     let lastScrollTop = 0;
-    let headerHeight = header.offsetHeight; // высота header
+    let headerHeight = header.offsetHeight;
 
-    // Функция для применения фиксации
     function fixHeader() {
         if (!header.classList.contains('header-fixed')) {
             header.classList.add('header-fixed');
@@ -357,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Функция для снятия фиксации
+
     function unfixHeader() {
         if (header.classList.contains('header-fixed')) {
             header.classList.remove('header-fixed');
@@ -368,17 +358,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Определяем направление: вверх (scrollTop < lastScrollTop) и не в самом верху
+
         if (scrollTop < lastScrollTop && scrollTop > 0) {
-            // Скроллим ВВЕРХ и мы не в самом верху – фиксируем header
+
             fixHeader();
         } 
         else if (scrollTop > lastScrollTop && header.classList.contains('header-fixed')) {
-            // Скроллим ВНИЗ – снимаем фиксацию (header снова становится статическим)
+
             unfixHeader();
         }
 
-        // Если дошли до самого верха – снимаем фиксацию, чтобы header встал на своё место
+
         if (scrollTop === 0) {
             unfixHeader();
         }
@@ -386,20 +376,20 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollTop = scrollTop;
     });
 
-    // Если страница уже прокручена вниз (например, перезагрузка), не фиксируем сразу
-    // Но можно по желанию: если при загрузке страница прокручена, а пользователь скроллит вверх – сработает.
+
+
 })();
 
 
-// ПЕРЕХОД К КАРТОЧКЕ "ПРОЧИЕ УСЛУГИ"
+
 function goToOtherServices(event) {
     if (event) event.preventDefault();
 
-    // если уже на главной — просто скроллим к карточке
+
     if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
         scrollToOtherServices();
     } else {
-        // иначе переходим на главную с меткой в URL
+
         window.location.href = 'index.html#other-services';
     }
 }
@@ -411,7 +401,7 @@ function scrollToOtherServices() {
     const target = document.getElementById('other-services');
     if (!target) return;
 
-    // учитываем высоту фиксированного хедера, чтобы карточку не перекрыло
+
     const header = document.querySelector('header');
     const headerHeight = header ? header.offsetHeight : 0;
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
@@ -422,7 +412,7 @@ function scrollToOtherServices() {
     });
 }
 
-// если пришли на index.html по ссылке с #other-services — доскроллить после загрузки
+
 window.addEventListener('load', () => {
     if (window.location.hash === '#other-services') {
         setTimeout(scrollToOtherServices, 100);

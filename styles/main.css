@@ -47,7 +47,7 @@ h5 {
     padding: 0;
 }
 
-/* HEADER */
+
 
 .container {
     width: 100%;
@@ -70,7 +70,7 @@ h5 {
         margin: 0 auto;
     }
 
-    /* Класс, который делает header фиксированным при скролле вверх */
+    
     .header-fixed {
         position: fixed !important;
         background-color: var(--grey-light);
@@ -79,7 +79,7 @@ h5 {
         border-bottom: 1px solid var(--dark);
         width: 100%;
         z-index: 1000;
-        /* Плавное появление (можно добавить анимацию) */
+        
         animation: slideDown 0.3s ease forwards;
     }
 
@@ -92,15 +92,15 @@ h5 {
         }
     }
 
-    /* Чтобы контент не прыгал, когда header становится фиксированным, добавляем padding-top на body */
+    
     body.header-fixed-padding {
-        padding-top: 60px; /* замените на реальную высоту вашего header */
+        padding-top: 60px; 
     }
 
 
         .logo {
             display: inline-block;
-            /* flex-grow: 1; */
+            
             margin: 0;
             width: 124px;
             height: 24px;
@@ -125,7 +125,7 @@ h5 {
             background-color: transparent;
             margin: 0 auto;
             justify-content: space-between;
-            cursor: pointer; /* Добавим курсор */
+            cursor: pointer; 
             transform: translateX(-50%);
         }
 
@@ -134,7 +134,7 @@ h5 {
             width: 50px;
             height: 2px;
             border: none;
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transition: transform 0.3s ease, opacity 0.3s ease; 
             transform-origin: center center;
             }
 
@@ -151,19 +151,19 @@ h5 {
             width: 50px;
             height: 2px;
             border: none;
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Анимируем transform */
+            transition: transform 0.3s ease, opacity 0.3s ease; 
             transform-origin: center center;
             }
 
             @media (hover: hover) {
                 .central-btn:hover #nav-line01 {
-                    transform: translateY(8px);  /* Смещаем первую линию вниз на 8px */
+                    transform: translateY(8px);  
                 }
             }
 
             @media (hover: hover) {
                 .central-btn:hover #nav-line03 {
-                    transform: translateY(-8px); /* Смещаем третью линию вверх на 8px */
+                    transform: translateY(-8px); 
                 }
             }
 
@@ -199,7 +199,7 @@ h5 {
             background-size: contain;
         }
 
-        /* Отключаем hover для мобильных устройств */
+        
         @media(hover: hover) {
             .presentation-btn:hover {
                 background-color: var(--accent);
@@ -217,8 +217,8 @@ h5 {
             margin-left: 20px;
             border: 1px solid var(--dark); 
             transition: var(--tr);
-            display: flex;          /* Добавляем flex */
-            justify-content: center; /* Центрируем текст по умолчанию */
+            display: flex;          
+            justify-content: center; 
 
         }
 
@@ -230,12 +230,12 @@ h5 {
             }
         }
 
-/* HERO */
+
 
 .hero {
     position: relative;
     max-width: 1920px;
-    height: 100vh; /* убрать, чтобы была анимация фона */
+    height: 100vh; 
     max-height: 720px;
     margin: 0 auto;
     background-image: url(../images/hero_image.jpg);
@@ -248,19 +248,19 @@ h5 {
 }    
 
     .bracket-up {
-        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
+        position: absolute;  
         max-width: 1440px;
         margin: 0 auto;
         left: 40px;
         top: 100px;
-        background-image: url(../images/bracket-up.svg); /* Путь к иконке */
+        background-image: url(../images/bracket-up.svg); 
         background-repeat: no-repeat;
         background-size: contain;
-        width: 80px;  /* Начальный размер иконки*/
-        height: 80px;    /* Начальный размер иконки*/  
+        width: 80px;  
+        height: 80px;      
         filter: blur(4px);
         
-        /*Начальное положение анимации*/
+        
         transform: translate(0, 0);
         transition: transform 2s;
     }
@@ -270,19 +270,19 @@ h5 {
     }
 
     .bracket-down {
-        position: absolute;  /* Абсолютное позиционирование внутри кнопки */
+        position: absolute;  
         max-width: 1440px;
         margin: 0 auto;
         left: 560px;
         bottom: 300px;
-        background-image: url(../images/bracket-down.svg); /* Путь к иконке */
+        background-image: url(../images/bracket-down.svg); 
         background-repeat: no-repeat;
         background-size: contain;
-        width: 80px;  /* Начальный размер иконки*/
-        height: 80px;    /* Начальный размер иконки*/  
+        width: 80px;  
+        height: 80px;      
         filter: blur(4px);
         
-        /*Начальное положение анимации*/
+        
         transform: translate(30px, 30px);
         transition: transform 2s;
     }
@@ -311,24 +311,24 @@ h5 {
             font-family: var(--inter);
             font-weight: var(--light);
             text-align: left;
-            font-size: 20px; /* Начальный размер шрифта*/
+            font-size: 20px; 
             letter-spacing: -0.04em;
             text-transform: uppercase;
             color: var(--light);
             
             
-            /*Стили для анимации*/
-            opacity: 0; /* Начальная прозрачность (невидимый) */
-            filter: blur(20px); /* Начальная размытость */
-            transform: scale(0.5); /* Начальный масштаб (50%) */
-            transition: opacity 2s, filter 2s, transform 2s, font-size 2s; /* Плавный переход */
+            
+            opacity: 0; 
+            filter: blur(20px); 
+            transform: scale(0.5); 
+            transition: opacity 2s, filter 2s, transform 2s, font-size 2s; 
             }
 
         .hero-title.loaded {
-            opacity: 1; /* Конечная прозрачность (видимый) */
-            filter: blur(0); /* Конечная размытость (нет размытия) */
-            transform: scale(1); /* Конечный масштаб (100%) */
-            font-size: 100px; /* Конечный размер шрифта */
+            opacity: 1; 
+            filter: blur(0); 
+            transform: scale(1); 
+            font-size: 100px; 
         }
 
         .hero-description {
@@ -341,20 +341,20 @@ h5 {
             text-transform: uppercase;
             color: var(--light);
             
-            /* Стили для анимации */
-            opacity: 0; /* Начальная прозрачность (невидимый) */
-            transition: opacity 1s; /* Плавный переход для прозрачности */
+            
+            opacity: 0; 
+            transition: opacity 1s; 
         }
 
         .hero-description.loaded {
-            opacity: 1; /* Конечная прозрачность (видимый) */
+            opacity: 1; 
         }
 
         .highlight {
-            position: relative; /*  Необходимо для позиционирования фона */
-            z-index: 1; /*  Обеспечиваем, чтобы текст был над фоном */
+            position: relative; 
+            z-index: 1; 
             color: var(--light);
-            transition: color 1s; /* Плавное изменение цвета текста */
+            transition: color 1s; 
         }
 
         .highlight::before {
@@ -362,19 +362,19 @@ h5 {
             position: absolute;
             top: 0;
             left: 0;
-            width: 0; /* Начальная ширина фона */
+            width: 0; 
             height: 100%;
             background-color: #F0FF97;
-            transition: width 1s; /* Плавное изменение ширины */
-            z-index: -1; /* Помещаем фон под текст */
+            transition: width 1s; 
+            z-index: -1; 
         }
 
         .highlight.loaded::before {
-            width: 100%; /* Конечная ширина фона */
+            width: 100%; 
         }
 
         .highlight.loaded {
-            color: var(--dark); /* Цвет текста при появлении фона */
+            color: var(--dark); 
         }
 
         .products-btn {
@@ -389,19 +389,19 @@ h5 {
             border-radius: 40px;
             margin-top: 20px;
     
-            /* Плавный переход для background-color, color и opacity */
+            
             transition: background-color 0.5s, color 0.5s, opacity 1s;
         
-            /* Стили для анимации */
-            opacity: 0; /* Начальная прозрачность (невидимый) */
+            
+            opacity: 0; 
         }
 
         .products-btn.loaded {
-        opacity: 1; /* Конечная прозрачность (видимый) */
+        opacity: 1; 
         }
 
 
-        /* применяем hover только для ПК (есть курсор) */
+        
         @media(hover: hover) {
             .products-btn:hover {
                 background-color: var(--accent);
@@ -419,25 +419,25 @@ h5 {
     position: absolute;
     background-position: center center;
     left: 50%;
-    bottom: -120px;                     /* конечное положение – остаётся */
+    bottom: -120px;                     
     
-    /* Начальное состояние: скрыта сверху */
-    transform: translate(-50%, -100%);  /* сдвиг вверх на 100% высоты (120px) */
+    
+    transform: translate(-50%, -100%);  
     opacity: 0;
     
-    /* Плавная анимация */
+    
     transition: transform 1.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 1.4s ease;
 }
 
-/* Конечное состояние, когда линия появилась */
+
 .line.line--visible {
-    transform: translate(-50%, -50%);   /* исходное положение, которое вас устраивает */
+    transform: translate(-50%, -50%);   
     opacity: 1;
 }
 
 
 
-/* TRANSITION */
+
 
 .transition-text {
     width: 100%;
@@ -450,19 +450,19 @@ h5 {
     text-transform: uppercase;
     color: var(--dark);
 
-    /* Начальное состояние (скрыто и смещено) */
+    
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Конечное состояние при появлении в зоне видимости */
+
 .transition-text.transition-text--visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* НАМ ДОВЕРЯЮТ */
+
 
 .trust {
     width: 100%;
@@ -497,11 +497,11 @@ h5 {
   
 .trust-container {
     display: grid;
-    grid-template-columns: 50% 25% 25%; /* первая колонка 50%, остальные по 25% */ 
+    grid-template-columns: 50% 25% 25%;  
     grid-template-rows: auto;
     row-gap: 60px;
     max-width: 1440px;
-    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
+    width: 100%; 
     margin: 0px auto;
     margin-top: 60px; 
     box-sizing: border-box;
@@ -562,24 +562,24 @@ h5 {
     }
 
     .trust-textblock3 {
-        grid-column: 1; /* первая колонка */
+        grid-column: 1; 
         border-left: 2px solid var(--dark);
         margin-right: 30px;
         margin-left: 20vw;
         padding-left: 12px;
         max-width: 360px;
-        box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+        box-sizing: border-box; 
     }
 
     .trust-textblock4 {
-        grid-column: 2; /* вторая колонка, начинается с 50% */
+        grid-column: 2; 
         border-left: 2px solid var(--dark);
         padding-left: 12px;
         max-width: 270px;
         box-sizing: border-box;
     }
 
-    /* Базовые стили для всех блоков (оставляем существующие, добавляем анимацию) */
+    
     .trust-textblock,
     .trust-textblock2,
     .trust-textblock3,
@@ -589,7 +589,7 @@ h5 {
         transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    /* Конечное состояние, когда блок стал виден на 90% */
+    
     .trust-textblock.trust-visible,
     .trust-textblock2.trust-visible,
     .trust-textblock3.trust-visible,
@@ -602,7 +602,7 @@ h5 {
 
 
 
-/* НАШИ ПРОДУКТЫ */
+
 
 .products {
     margin-bottom: 80px;
@@ -649,29 +649,29 @@ h5 {
     padding: 30px 30px;
     z-index: 1;
 
-    /* Начальное состояние: скрыт и слегка смещён вниз */
+    
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Класс, который добавится при видимости 90% */
+
 .products-item.products-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Уголки — общие стили */
+
     .corner3 {
         position: absolute;
         width: 10px;
         height: 10px;
-        pointer-events: none; /* чтобы не мешали кликам */
+        pointer-events: none; 
         z-index: 1;
         
     }
 
-    /* Верхний левый */
+    
     .corner3-tl {
         top: -1px;
         left: -1px;
@@ -680,7 +680,7 @@ h5 {
         transition: transform 0.3s ease;
     }
 
-    /* Верхний правый */
+    
     .corner3-tr {
         top: -1px;
         right: -1px;
@@ -689,7 +689,7 @@ h5 {
         transition: transform 0.3s ease;
     }
 
-    /* Нижний левый */
+    
     .corner3-bl {
         bottom: -1px;
         left: -1px;
@@ -698,7 +698,7 @@ h5 {
         transition: transform 0.3s ease;
     }
 
-    /* Нижний правый */
+    
     .corner3-br {
         bottom: -1px;
         right: -1px;
@@ -715,7 +715,7 @@ h5 {
         }
     }
 
-        /* Анимация при наведении на .products-item (работает только для устройств с мышкой)*/
+        
     @media (hover: hover) {
         .products-item:hover .corner3-tl {
             transform: translate(-10px, -10px);
@@ -812,12 +812,12 @@ h5 {
         .products-features li::before {
             content: "";
             position: absolute;
-            left: -12px; /* позиция буллита слева у текста */
+            left: -12px; 
             top: 6px;
             width: 16px;
             height: 16px;
-            background-color: var(--dark); /* цвет буллита, можно изменить */
-            /* border-radius: 2px; скругление углов */
+            background-color: var(--dark); 
+            
             display: inline-block;
             margin: 0;
             padding: 0;
@@ -886,8 +886,8 @@ h5 {
         */
 
         .fa-btn {
-            display: flex;          /* Добавляем flex */
-            justify-content: center; /* Центрируем текст по умолчанию */
+            display: flex;          
+            justify-content: center; 
             min-height: 40px;
             width: 120px;
             box-sizing: border-box;
@@ -901,8 +901,8 @@ h5 {
             border-radius: 40px;
             transition: background-color 0.4s ease, color 0.4s ease;
 
-            margin-top: auto; /*  Ключевое свойство!  */
-            margin-bottom: 0; /*  Отступ снизу  */
+            margin-top: auto; 
+            margin-bottom: 0; 
         }
 
         @media (hover: hover) {
@@ -920,19 +920,19 @@ h5 {
 
 
 
-/* FAQ*/
+
 .faq {
-    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
+    width: 100%; 
     max-width: 1920px;
-    margin: 80px auto; /* центрирование контейнера */
+    margin: 80px auto; 
     margin-bottom: 0;
     background-color: var(--dark);
 }
 
 .faq-container {
     display: grid;
-    grid-template-columns: 50% 50%; /* первая колонка 50%, вторая - 50% */
-    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
+    grid-template-columns: 50% 50%; 
+    width: 100%; 
     max-width: 1440px;
     margin: 0 auto;
     padding: 20px 60px;
@@ -950,12 +950,12 @@ h5 {
     }
 
     .accordion-list {
-        grid-column: 2; /* Теперь весь список занимает правую колонку */
+        grid-column: 2; 
         display: flex;
         flex-direction: column;
         margin: 0;
-        gap: 10px; /* ВОТ ВАШ ОТСТУП 10px между аккордеонами */
-        align-self: start; /* Чтобы аккордеоны не растягивались на всю высоту заголовка FAQ */
+        gap: 10px; 
+        align-self: start; 
         margin-bottom: 20px;
         margin-top: 20px;
     }
@@ -1016,9 +1016,9 @@ h5 {
             border-radius: 50%;
             padding: 4px 4px;
             cursor: pointer;
-            flex-shrink: 0; /* Чтобы кнопка не уменьшалась при длинном вопросе */
-            display: flex; /* Делаем flex-контейнером */
-            align-items: center; /* Вертикальное выравнивание */
+            flex-shrink: 0; 
+            display: flex; 
+            align-items: center; 
             justify-content: center;
             transition: var(--tr);
         }
@@ -1030,7 +1030,7 @@ h5 {
 
 
 
-        /* Стиль для кнопки, когда аккордеон активен (открыт) */
+        
         .accordion-btn.active {
             transform: rotate(180deg);
 
@@ -1049,17 +1049,17 @@ h5 {
             padding-right: 20px;
             
 
-            /* Настройка анимации через точную высоту */
+            
             height: 0;
             overflow: hidden;
             transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             
-            /* Дополнительно для внутренних отступов */
-            /* box-sizing: border-box; */
+            
+            
         }
 
-        /* Когда аккордеон активен, показываем ответ */
+        
         .answer.active {
             padding-bottom: 12px;
             border-bottom: 2px solid white;
@@ -1095,7 +1095,7 @@ h5 {
         }
 
 
-/* FOOTER */
+
 
 .footer {
     background-color: var(--background);
@@ -1106,16 +1106,16 @@ h5 {
 
 .footer-wrapper {
     display: grid;
-    grid-template-columns: 50% 25% 25%; /* первая колонка 50%, остальные по 25% */
-    max-width: 1440px; /* максимальная ширина контейнера */
-    width: 100%; /* ширина контейнера 100%, чтобы адаптироваться к экрану */
-    margin: 20px auto; /* центрирование контейнера */
+    grid-template-columns: 50% 25% 25%; 
+    max-width: 1440px; 
+    width: 100%; 
+    margin: 20px auto; 
     
 }
     .logo-footer {
         grid-column: 1;
         display: flex;
-        /* align-self: center;           */
+        
         text-align: center;
         width: 247px;
         height: 49px;
@@ -1142,7 +1142,7 @@ h5 {
         justify-content: space-between;
         align-items: flex-start;
         margin: 0;
-        /* padding-top: 40px; */
+        
     }
 
     .footer-politics {
@@ -1170,7 +1170,7 @@ h5 {
         letter-spacing: -0.04em;
         color: var(--dark);
         margin: 0;
-        /* padding-top: 40px; */
+        
 
     }
 
@@ -1178,7 +1178,7 @@ h5 {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        flex-wrap: nowrap;   /* ← запрещаем перенос на новую строку */
+        flex-wrap: nowrap;   
         gap: 30px;
         margin-top: 20px;
     }
@@ -1208,22 +1208,22 @@ h5 {
         font-size: 14px;
         letter-spacing: -0.04em;
         color: var(--grey-dark);
-        text-align: right;  /* Выравнивание текста по правому краю */
+        text-align: right;  
         margin-top: auto;  
-        /* align-self: end;  */
-        /* padding-right: 15px; */    
+        
+            
     }
 
 
-    /* ПРИ НАЖАТИИ НА BURGER-MENU */   
-    /* Модальное окно – фоновая затемнённая подложка */
+       
+    
     .modal-overlay2 {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8); /* почти чёрный, как на картинке */
+        background-color: rgba(0, 0, 0, 0.8); 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1238,7 +1238,7 @@ h5 {
         visibility: visible;
     }
 
-    /* Контейнер с содержимым – ширина по контенту, центрирование */
+    
     .modal-container2 {
         position: relative;
         width: 90%;
@@ -1248,9 +1248,9 @@ h5 {
 
     .modal-content {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* две равные колонки */
+        grid-template-columns: 1fr 1fr; 
         gap: 40px;
-        background-color: var(--background); /* белый фон */
+        background-color: var(--background); 
         border-radius: 0px;
         padding: 48px 60px;
         position: relative;
@@ -1258,7 +1258,7 @@ h5 {
         box-sizing: border-box;
     }
 
-    /* Левая панель */
+    
     .modal-left {
         display: flex;
         flex-direction: column;
@@ -1269,7 +1269,7 @@ h5 {
     .modal-logo {
         width: 180px;
         height: 40px;
-        background-image: url('../images/logo-footer-dark.png'); /* ваш путь к лого */
+        background-image: url('../images/logo-footer-dark.png'); 
         background-repeat: no-repeat;
         background-size: contain;
         background-position: left center;
@@ -1291,7 +1291,7 @@ h5 {
 
     .contact-header {
         font-size: 16px;
-        /* letter-spacing: 0.1em; */
+        
         color: var(--grey-dark);
         margin: 0;
     }
@@ -1326,11 +1326,11 @@ h5 {
 
 
 .mail-icon {
-    background-image: url(../images/finaction/mail-icon.svg); /* Путь к иконке */
-    width: 40px;        /* Ширина иконки */
-    height: 40px;       /* Высота иконки */ 
+    background-image: url(../images/finaction/mail-icon.svg); 
+    width: 40px;        
+    height: 40px;        
     background-repeat: no-repeat;
-    background-size: contain; /* Масштабируем иконку */
+    background-size: contain; 
     transition: var(--tr);
 }
 
@@ -1340,11 +1340,11 @@ h5 {
 }
 
 .tg-icon {
-    background-image: url(../images/finaction/tg-icon.svg); /* Путь к иконке */
-    width: 40px;        /* Ширина иконки */
-    height: 40px;       /* Высота иконки */ 
+    background-image: url(../images/finaction/tg-icon.svg); 
+    width: 40px;        
+    height: 40px;        
     background-repeat: no-repeat;
-    background-size: contain; /* Масштабируем иконку */
+    background-size: contain; 
     transition: var(--tr);
 }
 
@@ -1354,7 +1354,7 @@ h5 {
 }
 
 
-    /* Правая панель */
+    
     .modal-right {
         position: relative;
         display: flex;
@@ -1432,7 +1432,7 @@ h5 {
     }
 
 
-    /* Модальное окно СВЯЗАТЬСЯ / ДЕМО */
+    
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -1467,16 +1467,16 @@ h5 {
         box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
     }
 
-    /* Уголки — общие стили */
+    
     .corner {
         position: absolute;
         width: 10px;
         height: 10px;
-        pointer-events: none; /* чтобы не мешали кликам */
+        pointer-events: none; 
         z-index: 1;
     }
 
-    /* Верхний левый */
+    
     .corner-tl {
         top: 16px;
         left: 16px;
@@ -1484,7 +1484,7 @@ h5 {
         border-left: 2px solid #1e1e2a;
     }
 
-    /* Верхний правый */
+    
     .corner-tr {
         top: 16px;
         right: 16px;
@@ -1492,7 +1492,7 @@ h5 {
         border-right: 2px solid #1e1e2a;
     }
 
-    /* Нижний левый */
+    
     .corner-bl {
         bottom: 16px;
         left: 16px;
@@ -1500,7 +1500,7 @@ h5 {
         border-left: 2px solid #1e1e2a;
     }
 
-    /* Нижний правый */
+    
     .corner-br {
         bottom: 16px;
         right: 16px;
@@ -1508,10 +1508,10 @@ h5 {
         border-right: 2px solid #1e1e2a;
     }
 
-    /* Кнопка закрытия — выше уголков */
+    
     .modal-close {
         position: absolute;
-        top: 8px;          /* выше, чем top уголков (16px) */
+        top: 8px;          
         left: 50%;
         transform: translateX(-50%);
         background: none;
@@ -1522,15 +1522,15 @@ h5 {
         color: #1e1e2a;
         transition: all 0.2s;
         line-height: 1;
-        /* padding: 4px 4px; */
+        
         width: 32px;
         height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        z-index: 10;       /* выше уголков */
-        /* box-sizing: border-box; */
+        z-index: 10;       
+        
     }
 
 
@@ -1539,7 +1539,7 @@ h5 {
         background-color: #1e1e2a;
     }
 
-    /* Стили полей — только нижняя граница */
+    
     .modal-form .form-group {
         margin-bottom: 28px;
     }
@@ -1579,13 +1579,13 @@ h5 {
         color: var(--accent);
     }
 
-    /* Чекбоксы */
-    /* Уменьшаем расстояние между двумя чекбоксами */
+    
+    
     .modal-form .checkbox-group {
-        margin: 0 0 8px 0;   /* у всех чекбоксов нижний отступ 8px, верхний 0 */
+        margin: 0 0 8px 0;   
     }
     .modal-form .checkbox-group:last-child {
-        margin-bottom: 0;    /* у последнего чекбокса отступ снизу 0 */
+        margin-bottom: 0;    
     }
 
 
@@ -1609,7 +1609,7 @@ h5 {
         accent-color: #1e1e2a;
     }
 
-    /* Кнопка отправки */
+    
     .submit-btn {
         display: block;
         width: 100%;
@@ -1634,7 +1634,7 @@ h5 {
         overflow: hidden;
     }
 
-    /* Кастомное уведомление (замена alert) */
+    
     .alert-overlay {
         position: fixed;
         top: 0;
@@ -1646,7 +1646,7 @@ h5 {
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 10001; /* выше основной модалки (у неё 10000) */
+        z-index: 10001; 
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -1701,13 +1701,13 @@ h5 {
     }
 
 
-    /* Баннер согласия на cookies */
+    
     .cookie-banner {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 9999; /* ниже модалок (у них 10000/10001) */
+        z-index: 9999; 
         display: flex;
         justify-content: center;
         padding: 20px;
@@ -1785,7 +1785,7 @@ h5 {
 
 
 
-/* MEDIA 1080px*/
+
 @media (max-width: 1220px) {
         
     .bracket-down {
@@ -1796,7 +1796,7 @@ h5 {
 
 
 
-/* MEDIA 1080px*/
+
 @media (max-width: 1080px) {
 
     .container {
@@ -1899,7 +1899,7 @@ h5 {
 }
 
 
-/* MEDIA 800px*/
+
 @media (max-width: 800px) {
 
     .footer-year {
@@ -1916,7 +1916,7 @@ h5 {
 
 
 
-/* MEDIA TABLET 768px*/
+
 @media (max-width: 768px) {
 
     .container {
@@ -1957,7 +1957,7 @@ h5 {
 
 }
 
-/* MEDIA TABLET 730px */
+
 @media (max-width: 730px) {
 
     .hero {
@@ -1986,11 +1986,11 @@ h5 {
     }
 
     .hero-title {
-        font-size: 10px; /* Начальный размер шрифта*/
+        font-size: 10px; 
     }
 
     .hero-title.loaded {
-        font-size: 60px; /* Конечный размер шрифта для маленьких экранов */
+        font-size: 60px; 
     }
 
 
@@ -2001,7 +2001,7 @@ h5 {
 
 
     .line {
-    transform: translate(-50%, -50%);   /* исходное положение, которое вас устраивает */
+    transform: translate(-50%, -50%);   
         opacity: 1;
     }
 
@@ -2068,13 +2068,13 @@ h5 {
     }
 
     .mail-icon {  
-        width: 30px;        /* Ширина иконки */
-        height: 30px;       /* Высота иконки */ 
+        width: 30px;        
+        height: 30px;        
     }
 
     .tg-icon {  
-        width: 30px;        /* Ширина иконки */
-        height: 30px;       /* Высота иконки */ 
+        width: 30px;        
+        height: 30px;        
     }
 
     .footer-contacts-pull {
@@ -2083,7 +2083,7 @@ h5 {
 
 
 
-    /* МОДАЛЬНОЕ ОКНО ДЛЯ BURGER     */
+    
     .modal-content {
         grid-template-columns: 1fr;
         margin: 0 auto;
@@ -2093,12 +2093,12 @@ h5 {
        
     }
 
-    /* Правая панель — выше */
+    
     .modal-right {
         order: 1;
     }
 
-    /* Левая панель — ниже */
+    
     .modal-left {
         order: 2;
         gap: 40px;
@@ -2127,7 +2127,7 @@ h5 {
 }
 
 
-/* MEDIA TABLET 600px */
+
 @media (max-width: 600px) {
 
     .header {
@@ -2196,25 +2196,25 @@ h5 {
         margin: 0;
     }
 
-    /* модальное окно СВЯЗАТЬСЯ */
+    
     .checkbox-label {
         font-size: 12px;
     }
 
     .faq-container {
-        grid-template-columns: 1fr; /* одна колонка на всю ширину */
-        padding: 20px 20px;         /* уменьшаем боковые отступы */
+        grid-template-columns: 1fr; 
+        padding: 20px 20px;         
     }
 
     .faq-title {
-        grid-column: auto;           /* сбрасываем привязку к первой колонке */
-        font-size: 48px;             /* уменьшаем размер шрифта для мобильных */
+        grid-column: auto;           
+        font-size: 48px;             
         padding-bottom: 20px;
     }
 
     .accordion-list {
-        grid-column: auto;           /* сбрасываем привязку ко второй колонке */
-        margin-top: 20px;            /* небольшой отступ от заголовка (опционально) */
+        grid-column: auto;           
+        margin-top: 20px;            
     }
 
     .accordion-btn {
@@ -2241,25 +2241,25 @@ h5 {
     }
 
     .central-btn {
-        width: 25px;           /* Было 50px */
-        height: 25px;          /* Было 50px */
-        padding-top: 6px;      /* Было 16px */
-        padding-bottom: 6px;   /* Было 16px */
+        width: 25px;           
+        height: 25px;          
+        padding-top: 6px;      
+        padding-bottom: 6px;   
     }
 
     .nav-line01,
     .nav-line02,
     .nav-line03 {
-        width: 25px;           /* Было 50px */
+        width: 25px;           
     }
 
-    /* Корректируем смещение при наведении (пропорционально) */
+    
     .central-btn:hover #nav-line01 {
-        transform: translateY(4px);  /* Было 8px */
+        transform: translateY(4px);  
     }
 
     .central-btn:hover #nav-line03 {
-        transform: translateY(-4px); /* Было -8px */
+        transform: translateY(-4px); 
     }
 
 
@@ -2313,11 +2313,11 @@ h5 {
     }
 
     .hero-title {
-        font-size: 10px; /* Начальный размер шрифта*/
+        font-size: 10px; 
     }
 
     .hero-title.loaded {
-        font-size: 40px; /* Конечный размер шрифта для маленьких экранов */
+        font-size: 40px; 
     }
 
     .hero-description {
@@ -2407,7 +2407,7 @@ h5 {
         width: 100%;
     }
 
-    /* модальное окно СВЯЗАТЬСЯ */
+    
     .form-text {
         font-size: 12px;
     }
@@ -2431,13 +2431,13 @@ h5 {
     }
 
     .mail-icon {  
-        width: 20px;        /* Ширина иконки */
-        height: 20px;       /* Высота иконки */ 
+        width: 20px;        
+        height: 20px;        
     }
 
     .tg-icon {  
-        width: 20px;        /* Ширина иконки */
-        height: 20px;       /* Высота иконки */ 
+        width: 20px;        
+        height: 20px;        
     }
 
     .footer-contacts-pull {
@@ -2486,12 +2486,12 @@ h5 {
     }
 
     .hero-title {
-        font-size: 10px; /* Начальный размер шрифта*/
+        font-size: 10px; 
          font-weight: var(--light);
     }
 
     .hero-title.loaded {
-        font-size: 40px; /* Конечный размер шрифта для маленьких экранов */
+        font-size: 40px; 
     }
 
     .hero-description {
@@ -2553,7 +2553,7 @@ h5 {
     }
 
 
-    /* МОДАЛЬНОЕ ОКНО BURGER */
+    
     .modal-content {
         padding: 48px 30px;
     }
@@ -2563,7 +2563,7 @@ h5 {
     }
 
 
-    /*FAQ */
+    
     .accordion:has(.answer.active) .accordion-header {
         background-color: var(--grey-light);
         color: var(--dark);
@@ -2606,7 +2606,7 @@ h5 {
     }
 
     .hero-title.loaded {
-        font-size: 36px; /* Конечный размер шрифта для маленьких экранов */
+        font-size: 36px; 
     }
 
     .hero-description {

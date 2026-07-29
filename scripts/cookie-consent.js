@@ -1,11 +1,11 @@
 (function () {
-    const CONSENT_KEY = 'cookieConsent'; // хранит 'accepted' или 'declined'
+    const CONSENT_KEY = 'cookieConsent'; 
 
     function getConsent() {
         try {
             return localStorage.getItem(CONSENT_KEY);
         } catch (e) {
-            return null; // на случай, если localStorage недоступен (приватный режим и т.п.)
+            return null;
         }
     }
 
@@ -13,7 +13,7 @@
         try {
             localStorage.setItem(CONSENT_KEY, value);
         } catch (e) {
-            // тихо игнорируем — в худшем случае баннер будет появляться каждый раз
+
         }
     }
 
@@ -31,10 +31,10 @@
         const consent = getConsent();
 
         if (!consent) {
-            // решение ещё не принято — показываем баннер
+
             showBanner();
         } else if (consent === 'accepted') {
-            // согласие уже было дано ранее — сразу сигналим об этом
+
             document.dispatchEvent(new CustomEvent('cookieConsentAccepted'));
         }
 
