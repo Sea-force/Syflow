@@ -1,5 +1,3 @@
-
-
 function openModal() {
     const modal = document.getElementById('modalOverlay2');
     if (modal) {
@@ -16,10 +14,11 @@ function closeModal() {
     }
 }
 
-
+    const closeModalBtn = document.getElementById('closeModalBtn');
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeModal);
     }
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -280,9 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
 });
-
 
 
 
