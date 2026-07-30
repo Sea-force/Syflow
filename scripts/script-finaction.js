@@ -281,18 +281,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            console.log('Отправка данных:');
-            for (let [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
-            alert('Форма отправлена! (демо)');
-
-        });
-    }
 });
 
 
