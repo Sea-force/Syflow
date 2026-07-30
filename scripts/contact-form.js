@@ -25,7 +25,7 @@ alertOverlay.addEventListener('click', function (e) {
     if (e.target === alertOverlay) hideCustomAlert();
 });
 
-// Отправка формы
+// Отправка формы.
 document.getElementById('contactForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
