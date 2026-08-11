@@ -5,11 +5,12 @@ from email.message import EmailMessage
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, EmailStr, Field
+from starlette.middleware.base import BaseHTTPMiddleware
 
 load_dotenv()
 
@@ -19,6 +20,9 @@ SMTP_PORT = int(os.getenv("SMTP_PORT", "465"))
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 MAIL_TO = os.getenv("MAIL_TO", "syflow@mail.ru")
+
+# Единственная "правильная" версия домена, на которую редиректим всё остальное
+CANONICAL_HOST = "syflow.ru"
 
 # Список доменов, с которых разрешено обращаться к API (ваш сайт)
 ALLOWED_ORIGINS = [
@@ -72,12 +76,49 @@ async def favicon():
     return FileResponse(BASE_DIR / "favicon.svg")
 
 
+class CanonicalDomainMiddleware(BaseHTTPMiddleware):
+    """
+    Редиректит:
+      - www.syflow.ru -> syflow.ru
+      - http (если это видно по заголовку X-Forwarded-Proto) -> https
+
+    Amvera терминирует SSL на своём входном контроллере (nginx) и передаёт
+    запрос дальше уже как обычный HTTP. Поэтому смотреть на
+    request.url.scheme бесполезно — он почти всегда будет "http", даже
+    если пользователь зашёл по https. Чтобы понять, каким был запрос
+    на самом деле, нужно смотреть заголовок X-Forwarded-Proto.
+
+    Редирект на https делаем только если заголовок ЯВНО говорит "http" —
+    если заголовка нет вовсе, лучше ничего не редиректить, чем случайно
+    уйти в петлю редиректов.
+    """
+
+    async def dispatch(self, request: Request, call_next):
+        host = request.headers.get("host", "").split(":")[0].lower()
+        forwarded_proto = request.headers.get("x-forwarded-proto", "").lower()
+
+        wrong_host = host and host != CANONICAL_HOST
+        explicitly_http = forwarded_proto == "http"
+
+        if wrong_host or explicitly_http:
+            new_url = f"https://{CANONICAL_HOST}{request.url.path}"
+            if request.url.query:
+                new_url += f"?{request.url.query}"
+            return RedirectResponse(new_url, status_code=301)
+
+        return await call_next(request)
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_methods=["POST"],
     allow_headers=["*"],
 )
+
+# Добавляем ПОСЛЕ CORSMiddleware, чтобы он оказался внешним слоем
+# и редирект срабатывал раньше, чем запрос дойдёт до CORS-проверки.
+app.add_middleware(CanonicalDomainMiddleware)
 
 
 class ContactForm(BaseModel):
